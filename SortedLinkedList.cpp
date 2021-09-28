@@ -59,7 +59,26 @@ void SortedLinkedList::deleteItem(ItemType item)
 }
 int SortedLinkedList::searchItem(ItemType item)
 {
-    return 1;
+	int i = 0;
+	currentPos = head;
+	while (1)
+	{	
+		i++;
+		if (item.compareTo(currentPos -> item) == ItemType::EQUAL)
+		{
+			break;
+		}
+		else if (item.compareTo(currentPos -> item) == ItemType::GREATER)
+		{
+			i = -1;
+			break;
+		} // if
+	} // while
+	if (i == -1)
+	{	
+		cout << "Item not found" << endl;
+	} // if
+	return i;
 }
 ItemType SortedLinkedList::GetNextItem()
 {
@@ -67,7 +86,7 @@ ItemType SortedLinkedList::GetNextItem()
 }
 void SortedLinkedList::ResetList()
 {
-
+	currentPos = NULL;
 }
     
 //Extra Methods

@@ -9,6 +9,7 @@ class SortedLinkedList
 {
   public:
     SortedLinkedList();
+    ~SortedLinkedList();
     int length() const;
     void insertItem(ItemType item);
     void deleteItem(ItemType item);

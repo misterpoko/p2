@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include "SortedLinkedList.h"
+#include "ItemType.h"
 
 using namespace std;
 
@@ -42,9 +43,6 @@ int main(int argc, char *argv[])
       }
     } 
   }
-  //string testString; 
-  //getline(inFile,testString);
-  //cout << testString << endl; 
   
   cout << "Commands:" << endl;
   cout << "(i) - Insert value" << endl;

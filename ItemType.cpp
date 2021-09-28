@@ -3,6 +3,7 @@
 
 
 int value = NULL;
+ItemType::ItemType(){}
 //public:
 enum Comparison {GREATER, LESS, EQUAL};
 /**

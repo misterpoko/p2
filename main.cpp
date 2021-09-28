@@ -10,9 +10,19 @@ using namespace std;
 
 int main(int argc, char *argv[]) 
 {
+  SortedLinkedList listy;
   char userSelct;
   bool exit = false;
-
+  ifstream inFile; 
+  inFile.open(argv[1]);
+  if (!inFile)
+  {
+    cout << "Unable to open file";
+  }
+  //string testString; 
+  //getline(inFile,testString);
+  //cout << testString << endl; 
+  
   cout << "Commands:" << endl;
   cout << "(i) - Insert value" << endl;
   cout << "(d) - Delete value" << endl;

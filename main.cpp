@@ -15,9 +15,32 @@ int main(int argc, char *argv[])
   bool exit = false;
   ifstream inFile; 
   inFile.open(argv[1]);
-  if (!inFile)
+  if (!inFile.is_open())
   {
     cout << "Unable to open file";
+  }
+  else
+  {
+    string line;
+    int valueOfNode;
+    while (getline(inFile, line))
+    {
+      while (1)
+      {
+	//i really dont want to do this right now its 404 cant sleep oof
+	//but this is searching for a space in the line string to seperate the 
+	//numbers given to us by the text document
+	//if end should break
+	//else should truncate the string
+	string subLine = line; // assuming the above portion has been done and set into subline
+	stringstream ss;
+	ss << subLine;
+	ss >> valueOfNode;
+	ItemType* newItem = new ItemType();
+	newItem -> initialize(valueOfNode); // not sure this is functional or written yet
+	listy.insertItem(*newItem);
+      }
+    } 
   }
   //string testString; 
   //getline(inFile,testString);

@@ -3,10 +3,28 @@
 #include "ItemType.h"
 #include "SortedLinkedList.h"
 
-int length()
+/**
+ * This method gets the length of the Linked List.
+ * @return the length of this instance of a SortedLinkedLiset
+ */
+int SortedLinkedList::length() const
 {
-    return 1;
-}
+	if (head == NULL) 
+	{
+		return 0;
+	}
+	else
+	{
+		int i = 1;
+		ListNode* temp = head;
+		while (temp != NULL)
+		{
+			temp = temp -> next;	
+			i++;	
+		}
+		return i;
+	} // if
+} // length
 void SortedLinkedList::insertItem(ItemType item)
 {
 

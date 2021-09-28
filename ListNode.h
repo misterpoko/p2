@@ -3,9 +3,10 @@
 #include "ItemType.h"
 
 class ListNode
-  {
-    ItemType item; 
-    ListNode *next; 
-  };
+{
+	public:
+	ItemType item; 
+	ListNode *next; 
+};
 
 #endif

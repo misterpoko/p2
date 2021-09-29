@@ -1,7 +1,9 @@
 #include <iostream>
+#include <string>
 #include "ListNode.h"
 #include "ItemType.h"
 #include "SortedLinkedList.h"
+
 
 /**
  * This constructs a linked list with an empty head and empty currentpos
@@ -49,10 +51,25 @@ int SortedLinkedList::length() const
 	} // if
 } // length
 
-void SortedLinkedList::insertItem(ItemType item)
-{
 
+void SortedLinkedList::insertItem(ItemType items)
+{
+	ListNode* new_node = new ListNode();
+	new_node->item = items;
+	new_node->next = head; 
+	head = new_node;
 }
+
+void SortedLinkedList::printList()
+{
+	currentPos = head;
+	while(currentPos->next != NULL)
+	{
+		cout << currentPos->item.getValue() << " ";
+		currentPos = currentPos->next;
+	}
+}
+
 void SortedLinkedList::deleteItem(ItemType item)
 {
 
@@ -80,10 +97,10 @@ int SortedLinkedList::searchItem(ItemType item)
 	} // if
 	return i;
 }
-ItemType SortedLinkedList::GetNextItem()
+/*ItemType SortedLinkedList::GetNextItem()
 {
     
-}
+}*/
 void SortedLinkedList::ResetList()
 {
 	currentPos = NULL;

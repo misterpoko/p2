@@ -1,9 +1,10 @@
 #include <iostream>
 #include "ItemType.h"
 
-
-int value = NULL;
-ItemType::ItemType(){}
+ItemType::ItemType()
+{
+	int value=0; 
+}
 //public:
 enum Comparison {GREATER, LESS, EQUAL};
 /**

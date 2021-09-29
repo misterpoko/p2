@@ -11,7 +11,7 @@ class SortedLinkedList
     SortedLinkedList();
     ~SortedLinkedList();
     int length() const;
-    void insertItem(ItemType item);
+    void insertItem(ItemType items);
     void deleteItem(ItemType item);
     int searchItem(ItemType item);
     ItemType GetNextItem();
@@ -21,10 +21,14 @@ class SortedLinkedList
     void merge(SortedLinkedList *otherList); 
     void dan();
     void commonElements(SortedLinkedList *otherList);
+    void printList();
+    
     
   private:
     ListNode *head;
     ListNode *currentPos;
+    
+   
     
 };
 #endif

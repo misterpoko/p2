@@ -5,6 +5,7 @@
 class ListNode
 {
 	public:
+	ListNode(){}
 	ItemType item; 
 	ListNode *next; 
 };

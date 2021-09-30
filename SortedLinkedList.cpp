@@ -51,19 +51,40 @@ int SortedLinkedList::length() const
 	} // if
 } // length
 
-
+/*
+	Idea to get insert method https://www.youtube.com/watch?v=Gg89CzoRDfc&list=PLVZN-GUZ8jlQyzvGf8b6qeV8Anzje6k_2&index=3 
+*/
 void SortedLinkedList::insertItem(ItemType items)
 {
 	ListNode* new_node = new ListNode();
-	new_node->item = items;
-	new_node->next = head; 
-	head = new_node;
+	ListNode* reader = head;
+	new_node->item = items; 
+	new_node->next= NULL; 
+	if (head==NULL || (LESS == items.compareTo(reader->item)))
+	{
+		new_node->next = head;
+		head = new_node;
+	}
+	else if(EQUAL == items.compareTo(reader->item)) 
+	{
+		// Doesnt work just yet but the insert method does work. 
+		cout << "Sorry. You cannot insert the duplicate item." << endl;
+	}
+	else 
+	{
+		while(reader->next != NULL && (GREATER == items.compareTo(reader->next->item)))
+		{
+			reader = reader->next;
+		}
+		new_node->next = reader->next;
+		reader->next = new_node;
+	}
 }
 
 void SortedLinkedList::printList()
 {
 	currentPos = head;
-	while(currentPos->next != NULL)
+	while(currentPos != NULL)
 	{
 		cout << currentPos->item.getValue() << " ";
 		currentPos = currentPos->next;
@@ -81,11 +102,11 @@ int SortedLinkedList::searchItem(ItemType item)
 	while (1)
 	{	
 		i++;
-		if (item.compareTo(currentPos -> item) == ItemType::EQUAL)
+		if (item.compareTo(currentPos -> item) == EQUAL)
 		{
 			break;
 		}
-		else if (item.compareTo(currentPos -> item) == ItemType::GREATER)
+		else if (item.compareTo(currentPos -> item) == GREATER)
 		{
 			i = -1;
 			break;

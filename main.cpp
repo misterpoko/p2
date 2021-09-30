@@ -12,30 +12,32 @@ using namespace std;
 int main(int argc, char *argv[]) 
 {
   SortedLinkedList listy;
-  char userSelct;
+  char userSelect;
+  int numbSelect;
   bool exit = false;
 
   ifstream inFile;
   inFile.open(argv[1]);
   if (!inFile.is_open())
   {
-    cout << "Unable to open file";
+    cout << "Unable to open file" << endl;
   }
   else
   {
     string subLine;
     int valueOfNode;
-     ItemType* newItem;
+    ItemType newItem;
     //Gets each variable until it hits a space or EOF
     while (getline(inFile, subLine,' '))
     {
       valueOfNode = stoi(subLine);
-      cout << valueOfNode << " ";
-      newItem = new ItemType();
-      newItem -> initialize(valueOfNode); // not sure this is functional or written yet
-      listy.insertItem(*newItem);
+      //cout << subLine << " ";
+      newItem = ItemType();
+      newItem.initialize(valueOfNode); // not sure this is functional or written yet
+      listy.insertItem(newItem);
     }
-    //listy.printList();
+    listy.printList();
+    cout << endl;
 
     cout << "Commands:" << endl;
     cout << "(i) - Insert value" << endl;
@@ -52,12 +54,18 @@ int main(int argc, char *argv[])
     while(exit == false)
     {
       cout << "Enter a command: ";
-      cin >> userSelct;
+      cin >> userSelect;
       // Make a method to check for only one char
-      switch(userSelct)
+      switch(userSelect)
       {
         case 'i': //(i) - Insert value
-          cout << "Insert value test" << endl; 
+          cout << "Enter a numer: ";
+          cin >> numbSelect; 
+          newItem = ItemType();
+          newItem.initialize(numbSelect); // not sure this is functional or written yet
+          listy.insertItem(newItem);
+          listy.printList();
+          cout << endl;
           break; 
         case 'd': //(d) - Delete value
           cout << "Delete value test" << endl; 

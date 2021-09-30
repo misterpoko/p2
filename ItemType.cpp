@@ -5,8 +5,7 @@ ItemType::ItemType()
 {
 	int value=0; 
 }
-//public:
-enum Comparison {GREATER, LESS, EQUAL};
+//public:  
 /**
  * This method compares the item given to the item of this specific instance
  * If the item that is given is greater than the one of this instance then it will
@@ -14,7 +13,7 @@ enum Comparison {GREATER, LESS, EQUAL};
  * @param item the item being compared
  * @return an enum if its greater less or equal
  */	
-ItemType::Comparison ItemType::compareTo(ItemType item)
+Comparison ItemType::compareTo(ItemType item)
 {
 	if (item.getValue() > value)
 	{
@@ -47,5 +46,6 @@ void ItemType::initialize(int num)
 {
 	value = num;
 } // initialize
+
 
 //private:

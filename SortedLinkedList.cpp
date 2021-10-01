@@ -23,7 +23,7 @@ SortedLinkedList::~SortedLinkedList()
 	while (currentPos != NULL)
 	{
 		head = currentPos -> next;
-		free(currentPos);
+		delete(currentPos);
 		currentPos = head;	
 	}
 } // ~SortedLinkedList
@@ -66,11 +66,12 @@ void SortedLinkedList::insertItem(ItemType items)
     new_node->next= NULL;
     if (head==NULL || (LESS == items.compareTo(reader->item)))
     {
-	    new_node->next = head;
-        head = new_node;
+	new_node->next = head;
+	head = new_node;
     }//if
     else if (items.compareTo(reader->item) == EQUAL)
     {
+	delete(new_node);
         cout << "Sorry. You cannot insert the duplicate item." << endl;
         return;
     }//else if
@@ -80,6 +81,7 @@ void SortedLinkedList::insertItem(ItemType items)
         {
             if (items.compareTo(reader->next->item) == EQUAL)
             {
+		delete(new_node);
             	cout << "Sorry. You cannot insert the duplicate item." << endl;
                     return;
             } // if
@@ -116,7 +118,9 @@ void SortedLinkedList::deleteItem(ItemType items)
 
 	if(reader != NULL && EQUAL== items.compareTo(reader->item))
 	{
+		prev = head;
 		head = reader->next; //Mem leak becuase not actually deleting it is left as a hanging node
+		delete(prev);
 		return; 
 	}
 	else
@@ -132,7 +136,7 @@ void SortedLinkedList::deleteItem(ItemType items)
 			return;
 		}
 		prev -> next = reader->next;
-		delete reader;
+		delete(reader);
 	}
 } // deleteItem
 
@@ -197,7 +201,6 @@ void SortedLinkedList::merge(SortedLinkedList *otherList)
  */
 void SortedLinkedList::dan()
 {
-
 } // dan
 
 /**

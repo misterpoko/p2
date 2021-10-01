@@ -13,7 +13,7 @@ ItemType::ItemType()
  * @param item the item being compared
  * @return an enum if its greater less or equal
  */	
-ItemType::Comparison ItemType::compareTo(ItemType item)
+/*ItemType::*/Comparison ItemType::compareTo(ItemType item)
 {
 	if (item.getValue() < value)
 	{

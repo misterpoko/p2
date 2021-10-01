@@ -73,11 +73,6 @@ void SortedLinkedList::insertItem(ItemType items)
 	{
 		while(reader->next != NULL && (GREATER == items.compareTo(reader->next->item)))
 		{
-			if(reader != NULL)
-			{
-				cout << "Sorry. You cannot insert the duplicate item." << endl;
-				return;
-			}
 			reader = reader->next;
 		}
 		new_node->next = reader->next;
@@ -121,11 +116,13 @@ void SortedLinkedList::deleteItem(ItemType items)
 			prev = reader; 
 			reader = reader->next;
 		}
-	}
-	if(reader == NULL)
-	{
-		cout << "List is Empty" << endl; 
-		return;
+		if(reader == NULL)
+		{
+			cout << "List is Empty" << endl; 
+			return;
+		}
+		prev -> next = reader->next;
+		delete reader;
 	}
 } // deleteItem
 
@@ -164,6 +161,7 @@ int SortedLinkedList::searchItem(ItemType item)
  */
 ItemType SortedLinkedList::GetNextItem()
 {
+	
 } // GetNextItem
 
 /**

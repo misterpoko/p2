@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     while (getline(inFile, subLine,' '))
     {
       valueOfNode = stoi(subLine);
-      //cout << subLine << " ";
+      //cout << subLine << endl;
       newItem = ItemType();
       newItem.initialize(valueOfNode); // not sure this is functional or written yet
       listy.insertItem(newItem);
@@ -74,6 +74,7 @@ int main(int argc, char *argv[])
           newItem = ItemType();
           newItem.initialize(numbSelect);
           listy.deleteItem(newItem);
+          listy.printList();
           cout << endl;
           break;
         case 's': //(s) - Search value

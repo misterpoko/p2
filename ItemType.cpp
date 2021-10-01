@@ -15,7 +15,7 @@ ItemType::ItemType()
  */	
 Comparison ItemType::compareTo(ItemType item)
 {
-	if (item.getValue() > value)
+	if (item.getValue() < value)
 	{
 		return GREATER;
 	}
@@ -24,7 +24,7 @@ Comparison ItemType::compareTo(ItemType item)
 		return EQUAL;	
 	}
 	else
-	{
+	{ 
 		return LESS;
 	}
 } // compareTo

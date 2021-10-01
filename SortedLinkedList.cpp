@@ -54,6 +54,10 @@ int SortedLinkedList::length() const
 /*
 	Idea to get insert method https://www.youtube.com/watch?v=Gg89CzoRDfc&list=PLVZN-GUZ8jlQyzvGf8b6qeV8Anzje6k_2&index=3 
 */
+/**
+ * This puts in an item given its not a duplicate
+ * @param items the item that is being inserted.
+ */
 void SortedLinkedList::insertItem(ItemType items)
 {
 	ListNode* new_node = new ListNode();
@@ -79,8 +83,11 @@ void SortedLinkedList::insertItem(ItemType items)
 		new_node->next = reader->next;
 		reader->next = new_node;
 	}
-}
+} // insertItem
 
+/**
+ * This method prints out the list in the standard output
+ */
 void SortedLinkedList::printList()
 {
 	currentPos = head;
@@ -90,8 +97,13 @@ void SortedLinkedList::printList()
 		currentPos = currentPos->next;
 	}
 	cout << endl;
-}
+} // printList
 
+/**
+ * This method is used to delete Different nodes given an item that we specify to delete
+ * if item doesnt exist gives friendly text that its impossible
+ * @param items the item that is going to get deleted if it exists
+ */
 void SortedLinkedList::deleteItem(ItemType items)
 {
 	ListNode* temp = head;
@@ -101,7 +113,7 @@ void SortedLinkedList::deleteItem(ItemType items)
 	{
 		
 	}
-}
+} // deleteItem
 
 /**
  * This method searches the list for the items a specific 
@@ -131,10 +143,14 @@ int SortedLinkedList::searchItem(ItemType item)
 	} // if
 	return i;
 } // searchItem
-/*ItemType SortedLinkedList::GetNextItem()
+
+/**
+ * This method uses the currentPos and gets the next item in the list
+ * @return The next item in the list
+ */
+ItemType SortedLinkedList::GetNextItem()
 {
-    
-} */
+} // GetNextItem
 
 /**
  * This method sets the currentPos to Null

@@ -47,7 +47,7 @@ int SortedLinkedList::length() const
 			temp = temp -> next;	
 			i++;	
 		}
-		return i;
+		return i-1;
 	} // if
 } // length
 
@@ -67,13 +67,13 @@ void SortedLinkedList::insertItem(ItemType items)
 	}
 	else 
 	{
-		while(EQUAL == items.compareTo(reader->item))
-		{
-			cout << "Sorry. You cannot insert the duplicate item." << endl;
-			return;
-		}
 		while(reader->next != NULL && (GREATER == items.compareTo(reader->next->item)))
 		{
+			if(reader != NULL)
+			{
+				cout << "Sorry. You cannot insert the duplicate item." << endl;
+				return;
+			}
 			reader = reader->next;
 		}
 		new_node->next = reader->next;

@@ -106,12 +106,26 @@ void SortedLinkedList::printList()
  */
 void SortedLinkedList::deleteItem(ItemType items)
 {
-	ListNode* temp = head;
+			ListNode* reader = head;
 	ListNode* prev = NULL; 
 
-	if(temp != NULL && EQUAL== items.compareTo(temp->item))
+	if(reader != NULL && EQUAL== items.compareTo(reader->item))
 	{
-		
+		head = reader->next;
+		return; 
+	}
+	else
+	{
+		while(reader != NULL && EQUAL != items.compareTo(reader->item))
+		{
+			prev = reader; 
+			reader = reader->next;
+		}
+	}
+	if(reader == NULL)
+	{
+		cout << "List is Empty" << endl; 
+		return;
 	}
 } // deleteItem
 

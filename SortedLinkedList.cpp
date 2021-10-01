@@ -201,6 +201,20 @@ void SortedLinkedList::merge(SortedLinkedList *otherList)
  */
 void SortedLinkedList::dan()
 {
+	if (head != NULL && head->next != NULL)
+	{
+		ListNode* temp = head;
+		ListNode* ahead = temp ->next;
+		while (temp -> next != NULL)
+		{
+			deleteItem(ahead->item);
+			if (temp -> next != NULL)
+			{
+				temp = temp -> next;
+				ahead = temp -> next;
+			} // if	
+		} // while
+	} // if
 } // dan
 
 /**

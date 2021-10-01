@@ -91,6 +91,8 @@ int main(int argc, char *argv[])
           break;
         case 'a': //(a) - Delete alternate nodes
           cout << "Delete alternate nodes test" << endl;
+	  listy.dan();
+          listy.printList();
           break;
         case 'm': //(m) - Merge two lists
           cout << "Merge two lists test" << endl; 

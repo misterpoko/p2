@@ -78,13 +78,18 @@ int main(int argc, char *argv[])
           cout << endl;
           break;
         case 's': //(s) - Search value
-          cout << "Search value test" << endl; 
+          cout << "Enter a numer to search for: ";
+          cin >> numbSelect;
+          newItem = ItemType();
+          newItem.initialize(numbSelect);
+          listy.searchItem(newItem);
           break;
         case 'n': //(n) - Print next iterator value
           cout << "Print next iterator value test" << endl;
           break;
         case 'r': //(r) - Reset iterator
-          cout << "Reset iterator test" << endl;
+          cout << "Iterator Reset" << endl;
+          listy.ResetList();
           break;
         case 'a': //(a) - Delete alternate nodes
           cout << "Delete alternate nodes test" << endl;
@@ -103,7 +108,6 @@ int main(int argc, char *argv[])
           length = listy.length();
           cout << "Linked List is of length : " << length << endl;
           break;
-
         case 'q': //(q) - Quit program
           cout << "Quitting..." << endl;
           exit = true;

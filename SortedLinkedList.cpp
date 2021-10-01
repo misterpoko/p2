@@ -140,6 +140,7 @@ int SortedLinkedList::searchItem(ItemType item)
 		i++;
 		if (item.compareTo(currentPos -> item) == EQUAL)
 		{
+			cout << "Index: " << i << endl;
 			break;
 		}
 		else if (item.compareTo(currentPos -> item) == GREATER)

@@ -98,7 +98,23 @@ int main(int argc, char *argv[])
           cout << "Merge two lists test" << endl; 
           break;
         case 't': //(t) - Intersection
+	if (1) {
           cout << "Intersection test" << endl;
+	  //int numOfElements;
+	  SortedLinkedList* intersect = new SortedLinkedList();
+	  //cout << "Length of list to find intersection: "; // screw this ima create a default case before making it user friendly
+	  //cin >> numOfElements;
+	  //cout << "List elements separated by spaces in order: ";
+	  //cin
+	  for (int i = 0; i < 5; i++)
+	  {
+		newItem = ItemType();
+		newItem.initialize(i * 5);
+		intersect->insertItem(newItem);
+	  } // for
+	  listy.commonElements(intersect);
+	listy.printList();
+	} // if
           break;
         case 'p': //(p) - Print list
           cout << "Print the list: ";

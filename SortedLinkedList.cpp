@@ -224,6 +224,29 @@ void SortedLinkedList::dan()
  */ 
 void SortedLinkedList::commonElements(SortedLinkedList *otherList)
 {
-	
+	SortedLinkedList* blankSlate = new SortedLinkedList();
+	ListNode* temp = otherList -> head;
+	ListNode* original;
+	while (temp != NULL)
+	{
+		original = head;
+		while (original != NULL)
+		{
+			if (temp->item.compareTo(original->item) == EQUAL)
+			{
+				blankSlate -> insertItem(temp->item);
+			} // if
+			original = original -> next;
+		} // while
+		temp = temp->next;
+	} // while
+	temp = head;
+	while (temp != NULL && temp -> next != NULL)
+	{
+		temp = temp->next;
+		delete(head);
+		head = temp;		
+	} // while
+	head = blankSlate -> head;		
 } // commonElements
     

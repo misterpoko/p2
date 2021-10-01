@@ -60,25 +60,35 @@ int SortedLinkedList::length() const
  */
 void SortedLinkedList::insertItem(ItemType items)
 {
-	ListNode* new_node = new ListNode();
-	ListNode* reader = head;
-	new_node->item = items; 
-	new_node->next= NULL; 
-	if (head==NULL || (LESS == items.compareTo(reader->item)))
+    ListNode* new_node = new ListNode();
+    ListNode* reader = head;
+    new_node->item = items;
+    new_node->next= NULL;
+    if (head==NULL || (LESS == items.compareTo(reader->item)))
+    {
+	    new_node->next = head;
+        head = new_node;
+    }
+    else if (items.compareTo(reader->item) == EQUAL)
+    {
+        cout << "Sorry. You cannot insert the duplicate item." << endl;
+        return;
+    }
+    else        
 	{
-		new_node->next = head;
-		head = new_node;
+    	while(reader->next != NULL && (GREATER == items.compareTo(reader->next->item) || items.compareTo(reader->next->item) == EQUAL))
+                {
+                        if (items.compareTo(reader->next->item) == EQUAL)
+                        {
+                                cout << "Sorry. You cannot insert the duplicate item." << endl;
+                                return;
+                        } // if
+                        reader = reader->next;
+                }
+                new_node->next = reader->next;
+                reader->next = new_node;
 	}
-	else 
-	{
-		while(reader->next != NULL && (GREATER == items.compareTo(reader->next->item)))
-		{
-			reader = reader->next;
-		}
-		new_node->next = reader->next;
-		reader->next = new_node;
-	}
-} // insertItem
+}// insertItem
 
 /**
  * This method prints out the list in the standard output

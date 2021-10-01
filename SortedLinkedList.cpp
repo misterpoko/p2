@@ -68,25 +68,25 @@ void SortedLinkedList::insertItem(ItemType items)
     {
 	    new_node->next = head;
         head = new_node;
-    }
+    }//if
     else if (items.compareTo(reader->item) == EQUAL)
     {
         cout << "Sorry. You cannot insert the duplicate item." << endl;
         return;
-    }
+    }//else if
     else        
 	{
     	while(reader->next != NULL && (GREATER == items.compareTo(reader->next->item) || items.compareTo(reader->next->item) == EQUAL))
-                {
-                        if (items.compareTo(reader->next->item) == EQUAL)
-                        {
-                                cout << "Sorry. You cannot insert the duplicate item." << endl;
-                                return;
-                        } // if
-                        reader = reader->next;
-                }
-                new_node->next = reader->next;
-                reader->next = new_node;
+        {
+            if (items.compareTo(reader->next->item) == EQUAL)
+            {
+            	cout << "Sorry. You cannot insert the duplicate item." << endl;
+                    return;
+            } // if
+            reader = reader->next;
+        }//while
+        new_node->next = reader->next;
+        reader->next = new_node;
 	}
 }// insertItem
 
@@ -116,7 +116,7 @@ void SortedLinkedList::deleteItem(ItemType items)
 
 	if(reader != NULL && EQUAL== items.compareTo(reader->item))
 	{
-		head = reader->next;
+		head = reader->next; //Mem leak becuase not actually deleting it is left as a hanging node
 		return; 
 	}
 	else
@@ -143,27 +143,21 @@ void SortedLinkedList::deleteItem(ItemType items)
  */
 int SortedLinkedList::searchItem(ItemType item)
 {
-	int i = 0;
-	currentPos = head;
-	while (1)
-	{	
-		i++;
-		if (item.compareTo(currentPos -> item) == EQUAL)
+	int index = 0; 
+	ListNode* current = head;
+	while (current != NULL)
+	{
+		if (item.compareTo(current->item)== EQUAL)
 		{
-			cout << "Index: " << i << endl;
-			break;
+			cout << "Index " << index << endl; 
+			return index;
 		}
-		else if (item.compareTo(currentPos -> item) == GREATER)
-		{
-			i = -1;
-			break;
-		} // if
-	} // while
-	if (i == -1)
-	{	
-		cout << "Item not found" << endl;
-	} // if
-	return i;
+		current = current->next;
+		index++;
+	}
+	cout << "Item was not found" << endl;
+	return -1; 
+
 } // searchItem
 
 /**
@@ -172,7 +166,10 @@ int SortedLinkedList::searchItem(ItemType item)
  */
 ItemType SortedLinkedList::GetNextItem()
 {
-
+	ItemType nextItem;
+	ListNode* temp;
+	currentPos = currentPos->next;
+	
 } // GetNextItem
 
 /**

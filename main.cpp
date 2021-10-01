@@ -66,7 +66,6 @@ int main(int argc, char *argv[])
           newItem.initialize(numbSelect); // not sure this is functional or written yet
           listy.insertItem(newItem);
           listy.printList();
-          cout << endl;
           break; 
         case 'd': //(d) - Delete value
           cout << "Enter a numer to delete: ";
@@ -75,7 +74,6 @@ int main(int argc, char *argv[])
           newItem.initialize(numbSelect);
           listy.deleteItem(newItem);
           listy.printList();
-          cout << endl;
           break;
         case 's': //(s) - Search value
           cout << "Enter a numer to search for: ";
@@ -85,7 +83,7 @@ int main(int argc, char *argv[])
           listy.searchItem(newItem);
           break;
         case 'n': //(n) - Print next iterator value
-          cout << "Print next iterator value test" << endl;
+          listy.GetNextItem();
           break;
         case 'r': //(r) - Reset iterator
           cout << "Iterator Reset" << endl;

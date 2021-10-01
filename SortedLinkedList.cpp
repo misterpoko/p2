@@ -101,7 +101,7 @@ void SortedLinkedList::printList()
  */
 void SortedLinkedList::deleteItem(ItemType items)
 {
-			ListNode* reader = head;
+	ListNode* reader = head;
 	ListNode* prev = NULL; 
 
 	if(reader != NULL && EQUAL== items.compareTo(reader->item))
@@ -161,7 +161,7 @@ int SortedLinkedList::searchItem(ItemType item)
  */
 ItemType SortedLinkedList::GetNextItem()
 {
-	
+
 } // GetNextItem
 
 /**

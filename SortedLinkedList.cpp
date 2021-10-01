@@ -65,13 +65,13 @@ void SortedLinkedList::insertItem(ItemType items)
 		new_node->next = head;
 		head = new_node;
 	}
-	else if(EQUAL == items.compareTo(reader->item)) 
-	{
-		// Doesnt work just yet but the insert method does work. 
-		cout << "Sorry. You cannot insert the duplicate item." << endl;
-	}
 	else 
 	{
+		while(EQUAL == items.compareTo(reader->item))
+		{
+			cout << "Sorry. You cannot insert the duplicate item." << endl;
+			return;
+		}
 		while(reader->next != NULL && (GREATER == items.compareTo(reader->next->item)))
 		{
 			reader = reader->next;
@@ -89,11 +89,18 @@ void SortedLinkedList::printList()
 		cout << currentPos->item.getValue() << " ";
 		currentPos = currentPos->next;
 	}
+	cout << endl;
 }
 
-void SortedLinkedList::deleteItem(ItemType item)
+void SortedLinkedList::deleteItem(ItemType items)
 {
+	ListNode* temp = head;
+	ListNode* prev = NULL; 
 
+	if(temp != NULL && EQUAL== items.compareTo(temp->item))
+	{
+		
+	}
 }
 int SortedLinkedList::searchItem(ItemType item)
 {

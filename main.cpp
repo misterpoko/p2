@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
   SortedLinkedList listy;
   char userSelect;
   int numbSelect;
+  int length;
   bool exit = false;
 
   ifstream inFile;
@@ -59,7 +60,7 @@ int main(int argc, char *argv[])
       switch(userSelect)
       {
         case 'i': //(i) - Insert value
-          cout << "Enter a numer: ";
+          cout << "Enter a numer to insert: ";
           cin >> numbSelect; 
           newItem = ItemType();
           newItem.initialize(numbSelect); // not sure this is functional or written yet
@@ -68,7 +69,12 @@ int main(int argc, char *argv[])
           cout << endl;
           break; 
         case 'd': //(d) - Delete value
-          cout << "Delete value test" << endl; 
+          cout << "Enter a numer to delete: ";
+          cin >> numbSelect;
+          newItem = ItemType();
+          newItem.initialize(numbSelect);
+          listy.deleteItem(newItem);
+          cout << endl;
           break;
         case 's': //(s) - Search value
           cout << "Search value test" << endl; 
@@ -89,11 +95,14 @@ int main(int argc, char *argv[])
           cout << "Intersection test" << endl;
           break;
         case 'p': //(p) - Print list
-          cout << "Print list test" << endl;
+          cout << "Print the list: ";
+          listy.printList();
           break;
         case 'l': //(l) - Print length
-          cout << "Print length test";
+          length = listy.length();
+          cout << "Linked List is of length : " << length << endl;
           break;
+
         case 'q': //(q) - Quit program
           cout << "Quitting..." << endl;
           exit = true;

@@ -12,7 +12,7 @@ class SortedLinkedList
     ~SortedLinkedList();
     int length() const;
     void insertItem(ItemType items);
-    void deleteItem(ItemType item);
+    void deleteItem(ItemType items);
     int searchItem(ItemType item);
     ItemType GetNextItem();
     void ResetList();

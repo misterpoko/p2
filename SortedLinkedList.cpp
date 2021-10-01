@@ -102,6 +102,12 @@ void SortedLinkedList::deleteItem(ItemType items)
 		
 	}
 }
+
+/**
+ * This method searches the list for the items a specific 
+ * @param item the Item that we are searching for
+ * @return the indice that the item is at or -1 if it doesnt exist
+ */
 int SortedLinkedList::searchItem(ItemType item)
 {
 	int i = 0;
@@ -124,27 +130,47 @@ int SortedLinkedList::searchItem(ItemType item)
 		cout << "Item not found" << endl;
 	} // if
 	return i;
-}
+} // searchItem
 /*ItemType SortedLinkedList::GetNextItem()
 {
     
-}*/
+} */
+
+/**
+ * This method sets the currentPos to Null
+ */
 void SortedLinkedList::ResetList()
 {
 	currentPos = NULL;
-}
+} // ResetList
     
 //Extra Methods
+/**
+ * This method takes two list and merges them together under the condition
+ * that they do not have duplicates to the initial list.
+ * @param otherList is the other list being added to the original list.
+ */
 void SortedLinkedList::merge(SortedLinkedList *otherList)
 {
 
-}
+} // merge
+
+/**
+ * This method deletes all alternate nodes in the list starting with the second
+ * going to the 4th then the 6th and so on until the end of the list.
+ */
 void SortedLinkedList::dan()
 {
 
-}
+} // dan
+
+/**
+ * This method takes two list and finds the intersection of them. It modifies the 
+ * original to be the intersection and then prints it out.
+ * @param otherList is the otherlist to be crosschecked with the initial list.
+ */ 
 void SortedLinkedList::commonElements(SortedLinkedList *otherList)
 {
-
-}
+	
+} // commonElements
     

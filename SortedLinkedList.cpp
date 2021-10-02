@@ -73,7 +73,6 @@ void SortedLinkedList::insertItem(ItemType items)
 		{
 			currentPos->next = head;
 		}
-		cout <<currentPos->next->item.getValue() << endl;
     }//if
     else if (items.compareTo(reader->item) == EQUAL)
     {
@@ -210,14 +209,22 @@ void SortedLinkedList::ResetList()
  */
 void SortedLinkedList::merge(string otherList)
 {
+	SortedLinkedList listy2;
+    ItemType newMerge = ItemType();
+	int num;
 	int n = otherList.length();
 	char charList[n+1];
 	strcpy(charList,otherList.c_str());
-	for (int i=0; i<n;i++)
-		cout << charList[i] << endl;
-	/*char* token;
-	token = strtok(charList, " ");*/
-
+	char* token;
+	token = strtok(charList, " ");
+	while(token != NULL)
+	{
+		num = atoi(token);
+		token = strtok(NULL, " "); // Moves token to the next item.
+		newMerge.initialize(num); // not sure this is functional or written yet
+      	listy2.insertItem(newMerge);
+	}
+	
 } // merge
 
 /**

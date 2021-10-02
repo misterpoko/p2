@@ -29,14 +29,12 @@ int main(int argc, char *argv[])
     string subLine;
     int valueOfNode;
     ItemType newItem;
-    ItemType newMerge;
     //Gets each variable until it hits a space or EOF
     while (getline(inFile, subLine,' '))
     {
       valueOfNode = stoi(subLine);
-      //cout << subLine << endl;
       newItem = ItemType();
-      newItem.initialize(valueOfNode); // not sure this is functional or written yet
+      newItem.initialize(valueOfNode);
       listy.insertItem(newItem);
     }
     listy.printList();
@@ -98,9 +96,9 @@ int main(int argc, char *argv[])
           break;
         case 'm': //(m) - Merge two lists
           cout <<  "List elements separated by spaces in order :";
-          cin >> otherList;
-          cout << otherList<<endl;
-          //listy.merge(otherList); 
+          while ((getchar()) != '\n');
+          getline(cin, otherList);
+          listy.merge(otherList); 
           break;
         case 't': //(t) - Intersection
           if (1) 

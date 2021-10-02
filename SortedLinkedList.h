@@ -18,7 +18,7 @@ class SortedLinkedList
     void ResetList();
     
     
-    void merge(SortedLinkedList *otherList); 
+    void merge(string otherList); 
     void dan();
     void commonElements(SortedLinkedList *otherList);
     void printList();

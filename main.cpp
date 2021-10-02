@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 {
   SortedLinkedList listy;
   char userSelect;
+  string otherList;
   int numbSelect;
   int length;
   bool exit = false;
@@ -28,6 +29,7 @@ int main(int argc, char *argv[])
     string subLine;
     int valueOfNode;
     ItemType newItem;
+    ItemType newMerge;
     //Gets each variable until it hits a space or EOF
     while (getline(inFile, subLine,' '))
     {
@@ -56,7 +58,7 @@ int main(int argc, char *argv[])
     {
       cout << "Enter a command: ";
       cin >> userSelect;
-      // Make a method to check for only one char
+      
       switch(userSelect)
       {
         case 'i': //(i) - Insert value
@@ -83,7 +85,7 @@ int main(int argc, char *argv[])
           listy.searchItem(newItem);
           break;
         case 'n': //(n) - Print next iterator value
-          listy.GetNextItem();
+          cout << listy.GetNextItem().getValue() << endl;
           break;
         case 'r': //(r) - Reset iterator
           cout << "Iterator Reset" << endl;
@@ -91,30 +93,34 @@ int main(int argc, char *argv[])
           break;
         case 'a': //(a) - Delete alternate nodes
           cout << "Delete alternate nodes test" << endl;
-	  listy.dan();
+	        listy.dan();
           listy.printList();
           break;
         case 'm': //(m) - Merge two lists
-          cout << "Merge two lists test" << endl; 
+          cout <<  "List elements separated by spaces in order :";
+          cin >> otherList;
+          cout << otherList<<endl;
+          //listy.merge(otherList); 
           break;
         case 't': //(t) - Intersection
-	if (1) {
-          cout << "Intersection test" << endl;
-	  //int numOfElements;
-	  SortedLinkedList* intersect = new SortedLinkedList();
-	  //cout << "Length of list to find intersection: "; // screw this ima create a default case before making it user friendly
-	  //cin >> numOfElements;
-	  //cout << "List elements separated by spaces in order: ";
-	  //cin
-	  for (int i = 0; i < 5; i++)
-	  {
-		newItem = ItemType();
-		newItem.initialize(i * 5);
-		intersect->insertItem(newItem);
-	  } // for
-	  listy.commonElements(intersect);
-	listy.printList();
-	} // if
+          if (1) 
+          {
+            cout << "Intersection test" << endl;
+            //int numOfElements;
+            SortedLinkedList* intersect = new SortedLinkedList();
+            //cout << "Length of list to find intersection: "; // screw this ima create a default case before making it user friendly
+            //cin >> numOfElements;
+            //cout << "List elements separated by spaces in order: ";
+            //cin
+            for (int i = 0; i < 5; i++)
+            {
+              newItem = ItemType();
+              newItem.initialize(i * 5);
+              intersect->insertItem(newItem);
+            } // for
+          listy.commonElements(intersect);
+          listy.printList();
+          } // if
           break;
         case 'p': //(p) - Print list
           cout << "Print the list: ";

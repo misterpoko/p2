@@ -198,7 +198,7 @@ ItemType SortedLinkedList::GetNextItem()
  */
 void SortedLinkedList::ResetList()
 {
-	currentPos = NULL;
+	currentPos = head;
 } // ResetList
     
 //Extra Methods

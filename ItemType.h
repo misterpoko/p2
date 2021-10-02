@@ -2,7 +2,7 @@
 #define ITEMTYPE_H
 
 using namespace std;
-enum Comparison {GREATER,LESS,EQUAL};
+enum Comparison {GREATER,LESS,EQUAL}; //Need to put this back in the class and not have it as a global variabe
 
 class ItemType
   {

@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
   {
     string subLine;
     int valueOfNode;
+    int numOfElements;
     ItemType newItem;
     //Gets each variable until it hits a space or EOF
     while (getline(inFile, subLine,' '))
@@ -96,20 +97,18 @@ int main(int argc, char *argv[])
           break;
         case 'm': //(m) - Merge two lists
           cout <<  "List elements separated by spaces in order :";
-          while ((getchar()) != '\n');
+          while ((getchar()) != '\n'); // clears the cin buffer
           getline(cin, otherList);
           listy.merge(otherList); 
           break;
         case 't': //(t) - Intersection
           if (1) 
           {
-            cout << "Intersection test" << endl;
-            //int numOfElements;
             SortedLinkedList* intersect = new SortedLinkedList();
-            //cout << "Length of list to find intersection: "; // screw this ima create a default case before making it user friendly
-            //cin >> numOfElements;
-            //cout << "List elements separated by spaces in order: ";
-            //cin
+            cout << "Length of list to find intersection: ";
+            cin >> numOfElements;
+            cout << "List elements separated by spaces in order: ";
+            //cin >>
             for (int i = 0; i < 5; i++)
             {
               newItem = ItemType();
@@ -134,6 +133,7 @@ int main(int argc, char *argv[])
           break;
         default: //default case so if the input is not a selection
           cout << "Invalid selection" << endl;
+          while ((getchar()) != '\n'); // clears the cin buffer
       }
     }  
   }

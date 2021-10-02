@@ -6,6 +6,7 @@ class ListNode
 {
 	public:
 	ListNode(){}
+	//Need to be private 
 	ItemType item; 
 	ListNode *next; 
 };

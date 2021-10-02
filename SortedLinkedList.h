@@ -27,6 +27,7 @@ class SortedLinkedList
   private:
     ListNode *head;
     ListNode *currentPos;
+    int mergeStop;
     
    
     

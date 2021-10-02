@@ -13,6 +13,7 @@ SortedLinkedList::SortedLinkedList()
 {
 	head = NULL;
 	currentPos =  new ListNode;
+	bool mergeStop = false;
 } // SortedLinkedList
 
 /**
@@ -52,9 +53,6 @@ int SortedLinkedList::length() const
 	} // if
 } // length
 
-/*
-	Idea to get insert method https://www.youtube.com/watch?v=Gg89CzoRDfc&list=PLVZN-GUZ8jlQyzvGf8b6qeV8Anzje6k_2&index=3 
-*/
 /**
  * This puts in an item given its not a duplicate
  * @param items the item that is being inserted.
@@ -78,9 +76,10 @@ void SortedLinkedList::insertItem(ItemType items)
     {
 		delete(new_node);
         cout << "Sorry. You cannot insert the duplicate item." << endl;
+		mergeStop = true;
         return;
     }//else if
-    else        
+    else       
 	{
     	while(reader->next != NULL && (GREATER == items.compareTo(reader->next->item) || items.compareTo(reader->next->item) == EQUAL))
         {
@@ -88,6 +87,7 @@ void SortedLinkedList::insertItem(ItemType items)
             {
 				delete(new_node);
             	cout << "Sorry. You cannot insert the duplicate item." << endl;
+				mergeStop = true;
                 return;
             } // if
             reader = reader->next;
@@ -137,7 +137,7 @@ void SortedLinkedList::deleteItem(ItemType items)
 			prev = reader; 
 			reader = reader->next;
 		}
-		if(reader == NULL)
+		if(reader == NULL) //Wrong print out for if an item isnt present in the list
 		{
 			cout << "List is Empty" << endl; 
 			return;
@@ -172,6 +172,14 @@ int SortedLinkedList::searchItem(ItemType item)
 } // searchItem
 
 /**
+ * This method sets the currentPos to the beginning of the list
+ */
+void SortedLinkedList::ResetList()
+{
+	currentPos = head;
+} // ResetList
+    
+/**
  * This method uses the currentPos and gets the next item in the list
  * @return The next item in the list
  */
@@ -193,14 +201,7 @@ ItemType SortedLinkedList::GetNextItem()
 	return currentPos->item;
 } // GetNextItem
 
-/**
- * This method sets the currentPos to Null
- */
-void SortedLinkedList::ResetList()
-{
-	currentPos = head;
-} // ResetList
-    
+
 //Extra Methods
 /**
  * This method takes two list and merges them together under the condition
@@ -216,11 +217,16 @@ void SortedLinkedList::merge(string otherList)
 	strcpy(charList,otherList.c_str());
 	char* token;
 	token = strtok(charList, " ");
-	while(token != NULL)
+	while(token != NULL )
 	{
+		if(mergeStop == true)
+		{
+			break;
+		}
+		printf ("%s\n",token);
 		num = atoi(token);
 		token = strtok(NULL, " "); // Moves token to the next item.
-		newMerge.initialize(num); // not sure this is functional or written yet
+		newMerge.initialize(num);
       	insertItem(newMerge);
 	}
 	

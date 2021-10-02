@@ -209,7 +209,6 @@ void SortedLinkedList::ResetList()
  */
 void SortedLinkedList::merge(string otherList)
 {
-	SortedLinkedList listy2;
     ItemType newMerge = ItemType();
 	int num;
 	int n = otherList.length();
@@ -222,7 +221,7 @@ void SortedLinkedList::merge(string otherList)
 		num = atoi(token);
 		token = strtok(NULL, " "); // Moves token to the next item.
 		newMerge.initialize(num); // not sure this is functional or written yet
-      	listy2.insertItem(newMerge);
+      	insertItem(newMerge);
 	}
 	
 } // merge

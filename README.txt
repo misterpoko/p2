@@ -25,22 +25,57 @@ Files needed to run code
     input.txt
 
 Merge Function Big O notation and pseudo code
-    Big O: O(n)
-    pseudo code
+    Big O: O(n^2+n)
+    Pseudo code:
+    
+    checker = otherList->head;
+	temp = head;
+	while (checker not at end of list)
+	{
+		while (temp not end of list) 
+		{
+			if (checker->item == temp->item)
+			{
+				cout << "Sorry. You cannot insert the duplicate item" << endl;
+				return;
+			} 
+			advance temp;
+		} 
+		advance checker;
+	}
+	checker = otherList->head;
+	while (checker not at end of list)
+	{
+		insert item into checker;
+		advance checker;
+	} 
 
-        int num;
-        int n = length of user input
-        char charList[n+1];
-        char* token;
-        string copy to charList from user input
-        token = value before a space
-        while(token while not  NULL)
-        {
-            if(mergeStop == true)
-		    {
-			    break
-		    }
-            convert char* to int
-            insert item into linked list
-        }
-        return
+Find Common Elements Function Big O notation and pseudo code
+    Big O: O(n^2+n)
+    Pseudo Code:
+
+    blankSlate = new SortedLinkedList();
+	temp = otherList -> head;
+	ListNode* original;
+	while (temp not at end of list)
+	{
+		original = head;
+		while (orginal not at end of list)
+		{
+			if (temp item == orginial item)
+			{
+				insert item into blankSlate;
+			} 
+			advance orginal
+		} 
+		advance temp
+	}
+	temp = head;
+	while ( temp not at end of file and temp next isnt NULL)
+	{
+		advance temp
+		delete(head);
+		head = temp;		
+	} 
+	head = blankSlate -> head;		
+}

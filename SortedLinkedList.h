@@ -29,6 +29,7 @@ class SortedLinkedList
     ListNode *head;
     ListNode *currentPos;
     int mergeStop;
+    bool headCheck;
     
    
     

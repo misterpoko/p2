@@ -138,6 +138,7 @@ int main(int argc, char *argv[])
   	        getline(cin, otherList);
             listy2.createList(otherList);
             listy.commonElements(&listy2);
+            cout << "Intersection: ";
             listy.printList();
           break;
         case 'p': //(p) - Print list
@@ -160,12 +161,3 @@ int main(int argc, char *argv[])
   }
   return 1; 
 }
-/*
-void createList()
-{
-	int lengthOfList;
-	cout << "Length of list to merge: ";
-	cin >> lengthOfList;
-	SortedLinkedList temp = new SortedLinkedList();
-	while ();
-} // createList */

@@ -13,6 +13,7 @@ SortedLinkedList::SortedLinkedList()
 {
 	head = NULL;
 	currentPos = new ListNode;
+	bool headCheck = true;
 } // SortedLinkedList
 
 /**
@@ -136,9 +137,9 @@ void SortedLinkedList::deleteItem(ItemType items)
 			prev = reader; 
 			reader = reader->next;
 		}
-		if(reader == NULL) //Wrong print out for if an item isnt present in the list
+		if(reader == NULL)
 		{
-			cout << "List is Empty" << endl; 
+			cout << "Item not found." << endl; 
 			return;
 		}
 		prev -> next = reader->next;
@@ -182,10 +183,20 @@ void SortedLinkedList::ResetList()
  * This method uses the currentPos and gets the next item in the list
  * @return The next item in the list
  */
-ItemType SortedLinkedList::GetNextItem()
+ItemType SortedLinkedList::GetNextItem() // Bug after reseting it and the 'n' case prints 9 instead of 3
 {
 	ItemType empty = ItemType();
+	ListNode* temp = new ListNode;
 	empty.initialize(-1);
+	
+	if(currentPos == head && headCheck == true)
+	{
+		temp = currentPos;
+		currentPos = currentPos->next;
+		headCheck = false;
+		return temp->item;
+
+	}
 	if(currentPos == NULL)
 	{
 		cout << "The List is empty" << endl;
@@ -216,7 +227,7 @@ void SortedLinkedList::merge(SortedLinkedList *otherList)
 		{
 			if (checker->item.compareTo(temp->item) == EQUAL)
 			{
-				cout << "dup";
+				cout << "Sorry. You cannot insert the duplicate item" << endl;
 				return;
 			} // if
 			temp = temp->next;

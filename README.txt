@@ -2,7 +2,7 @@ The program name is Assigment_2
 
 The program makes a linked list and does some methods on the linked list it gets from a file from the command line
 
-Authors: Nathanial Mathers Orain Ferguson
+Authors: Nathaniel Mathers Orain Ferguson
 
 Citations
     Some logic and coding structure for the Insert Method from 
@@ -25,33 +25,33 @@ Files needed to run code
     input.txt
 
 Merge Function Big O notation and pseudo code
-    Big O: O(n^2+n)
+    Big O: O(n^2+n^2) -> O(n^2)
     Pseudo code:
     
     checker = otherList->head;
 	temp = head;
 	while (checker not at end of list)
-	{
-		while (temp not end of list) 
-		{
-			if (checker->item == temp->item)
-			{
-				cout << "Sorry. You cannot insert the duplicate item" << endl;
-				return;
-			} 
-			advance temp;
-		} 
-		advance checker;
-	}
+	{ --------------------------------------------------------------------------------------------\
+		while (temp not end of list) -------------------------------------------------------\ |
+		{                                                                                   | |
+			if (checker->item == temp->item) -----------------------------------------\ | |
+			{                                                                         | | |
+				cout << "Sorry. You cannot insert the duplicate item" << endl;    1 n n           n * n
+				return;                                                           | | |
+			}                                                                         | | |
+			advance temp;-------------------------------------------------------------/ | |
+		} ----------------------------------------------------------------------------------/ |
+		advance checker;                                                                      |
+	} --------------------------------------------------------------------------------------------/
 	checker = otherList->head;
 	while (checker not at end of list)
-	{
-		insert item into checker;
-		advance checker;
-	} 
+	{ ----------------------------------\
+		insert item into checker; n n (our insert item is of n time complexity) n * n
+		advance checker;            |
+	} ----------------------------------/
 
 Find Common Elements Function Big O notation and pseudo code
-    Big O: O(n^2+n)
+    Big O: O(n^2+n) -> O(n^2)
     Pseudo Code:
 
     blankSlate = new SortedLinkedList();
@@ -61,21 +61,21 @@ Find Common Elements Function Big O notation and pseudo code
 	{
 		original = head;
 		while (orginal not at end of list)
-		{
-			if (temp item == orginial item)
-			{
-				insert item into blankSlate;
-			} 
-			advance orginal
-		} 
+		{----------------------------------------------\
+			if (temp item == original item)----- 1 |
+			{                                    | n
+				insert item into blankSlate; n |
+			} -----------------------------------/ |       n * (n + 1)
+			advance orginal                        |
+		} ---------------------------------------------/
 		advance temp
 	}
 	temp = head;
 	while ( temp not at end of file and temp next isnt NULL)
-	{
-		advance temp
-		delete(head);
-		head = temp;		
-	} 
+	{ -----------------------------------------\
+		advance temp                       |
+		delete(head);                      n                         n
+		head = temp;		           |
+	} -----------------------------------------/
 	head = blankSlate -> head;		
 }

@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
             cout << numOfElements << endl;
 		} 
 		else {
-		cout << endl;
+			cout << endl;
 		} // if
           break;
         case 'r': //(r) - Reset iterator

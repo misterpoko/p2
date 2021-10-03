@@ -13,7 +13,7 @@
 SortedLinkedList::SortedLinkedList() 
 {
 	head = NULL;
-	currentPos = new ListNode;
+	currentPos = new ListNode();
 	bool headCheck = true;
 } // SortedLinkedList
 
@@ -65,7 +65,7 @@ void SortedLinkedList::insertItem(ItemType items)
     new_node->item = items;
     new_node->next= NULL;
     if (head==NULL || (LESS == items.compareTo(reader->item)))
-    {
+    { 
 		new_node->next = head;
 		head = new_node;
 		if (head != NULL)
@@ -265,6 +265,26 @@ ItemType SortedLinkedList::GetNextItem() // Bug after reseting it and the 'n' ca
 	} // if
 	currentPos = currentPos->next;
 	return currentPos->item;
+	 /*
+	ItemType whatsNext;
+	if(currentPos == NULL)
+	{
+		cout << "The List is empty" << endl;
+		return whatsNext;
+	}
+	if (currentPos == head)
+	{
+		return head->item;
+	} 
+	if (currentPos->next == NULL)
+	{
+		cout << "The end of the list has been reached";
+		return whatsNext;
+	}
+	whatsNext = currentPos->item;
+	currentPos = currentPos->next;
+	return whatsNext;
+	*/
 } // GetNextItem
 
 

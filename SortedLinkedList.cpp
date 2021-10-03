@@ -208,28 +208,37 @@ ItemType SortedLinkedList::GetNextItem()
  * that they do not have duplicates to the initial list.
  * @param otherList is the other list being added to the original list.
  */
-void SortedLinkedList::merge(string otherList)
+void SortedLinkedList::merge(SortedLinkedList *otherList)
 {
-    ItemType newMerge = ItemType();
-	int num;
-	int n = otherList.length();
-	char charList[n+1];
-	strcpy(charList,otherList.c_str());
-	char* token;
-	token = strtok(charList, " ");
-	while(token != NULL )
+	ListNode* given = otherList->head;
+	ListNode* old = head;
+	SortedLinkedList* newList = new SortedLinkedList();
+	while (old != NULL || given != NULL)
 	{
-		if(mergeStop == true)
+		if (old == NULL)
 		{
-			break;
-		}
-		printf ("%s\n",token);
-		num = atoi(token);
-		token = strtok(NULL, " "); // Moves token to the next item.
-		newMerge.initialize(num);
-      	insertItem(newMerge);
-	}
-	
+			newList->insertItem(old->item);
+			old = old->next;
+		} 
+		else if (given == NULL)
+		{
+			newList->insertItem(given->item);
+			given = given->next;
+		} 
+		else if (given->item.compareTo(old->item) == EQUAL)
+		{
+			while(newList->head != NULL)
+			{
+				newList->deleteItem(newList->head->item);
+			} // while
+			return;
+		} // if
+	} // while
+	while (head != NULL)
+	{
+		deleteItem(head->item);
+	} // while
+	head = newList->head;
 } // merge
 
 /**

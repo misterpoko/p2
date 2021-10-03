@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
           cout <<  "List elements separated by spaces in order :";
           while ((getchar()) != '\n'); // clears the cin buffer
           getline(cin, otherList);
-          listy.merge(otherList); 
+//          listy.merge(otherList); 
           break;
         case 't': //(t) - Intersection
           if (1) 
@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
   }
   return 1; 
 }
-
+/*
 void createList()
 {
 	int lengthOfList;
@@ -147,4 +147,4 @@ void createList()
 	cin >> lengthOfList;
 	SortedLinkedList temp = new SortedLinkedList();
 	while ();
-} // createList
+} // createList */

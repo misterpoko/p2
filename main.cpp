@@ -1,13 +1,41 @@
 #include <iostream>
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <fstream> 
-#include <string>
+#include <string.h>
 #include <sstream>
 #include <string>
 #include "SortedLinkedList.h"
 #include "ItemType.h"
 
 using namespace std;
+void createList(SortedLinkedList list)
+{
+  int valueOfNode;
+	int lengthOfList;
+  string line;
+  ItemType newMerge = ItemType();
+  int num,n;
+  char* token;
+	cout << "Length of list to merge: ";
+	cin >> lengthOfList;
+  while ((getchar()) != '\n'); // clears the cin buffer
+  cout << "List elements separated by spaces in order: ";
+  getline(cin, line);
+	n = line.length();
+	char charList[n+1];
+	strcpy(charList,line.c_str());
+	token = strtok(charList, " ");
+	while(token != NULL )
+	{
+		//printf ("%s\n",token);
+		num = atoi(token);
+		token = strtok(NULL, " "); // Moves token to the next item.
+		newMerge.initialize(num);
+    list.insertItem(newMerge);
+	}
+  //list.printList();
+  
+} // createList
 
 int main(int argc, char *argv[]) 
 {

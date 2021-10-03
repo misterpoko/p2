@@ -12,8 +12,7 @@
 SortedLinkedList::SortedLinkedList() 
 {
 	head = NULL;
-	currentPos =  new ListNode;
-	bool mergeStop = false;
+	currentPos = new ListNode;
 } // SortedLinkedList
 
 /**
@@ -70,7 +69,7 @@ void SortedLinkedList::insertItem(ItemType items)
 		if (head != NULL)
 		{
 			currentPos->next = head;
-		}
+		} // if
     }//if
     else if (items.compareTo(reader->item) == EQUAL)
     {
@@ -192,11 +191,10 @@ ItemType SortedLinkedList::GetNextItem()
 		cout << "The List is empty" << endl;
 		return empty;
 	}
-	if(currentPos->next == NULL)
-	{
-		cout << "The end of the list has been reached" << endl;
+	if (currentPos->next == NULL) {
+		cout << "The end of the list has been reached";
 		return empty;
-	}
+	} // if
 	currentPos = currentPos->next;
 	return currentPos->item;
 } // GetNextItem

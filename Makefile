@@ -6,7 +6,7 @@ BIN = compile
 all: $(BIN) 
 
 compile: main.o ItemType.o SortedLinkedList.o
-	$(CC) $(CFLAGS) -o compile main.o ItemType.o SortedLinkedList.o
+	$(CC) $(CFLAGS) -o main main.o ItemType.o SortedLinkedList.o
 
 main: main.o
 	$(CC) $(CFLAGS) -c main.cpp
@@ -21,4 +21,4 @@ SortedLinkedList: SortedLinkedList.o
 clean:
 	-rm -f a.out *.o core atest
 	-rm -f *.class
-	-rm -f $(BIN) 
+	-rm -f main 

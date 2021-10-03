@@ -8,7 +8,7 @@
 #include "ItemType.h"
 
 using namespace std;
-void createList(SortedLinkedList list)
+/*void createList(SortedLinkedList list)
 {
   int valueOfNode;
 	int lengthOfList;
@@ -36,7 +36,7 @@ void createList(SortedLinkedList list)
   //list.printList();
   
 } // createList
-
+*/
 int main(int argc, char *argv[]) 
 {
   SortedLinkedList listy;
@@ -67,7 +67,6 @@ int main(int argc, char *argv[])
       newItem.initialize(valueOfNode);
       listy.insertItem(newItem);
     }
-    listy.printList();
     cout << endl;
 
     cout << "Commands:" << endl;
@@ -113,30 +112,51 @@ int main(int argc, char *argv[])
             listy.searchItem(newItem);
           break;
         case 'n': //(n) - Print next iterator value
-            cout << listy.GetNextItem().getValue() << endl;
+		numOfElements = listy.GetNextItem().getValue();
+		if (numOfElements != -1)
+		{
+            cout << numOfElements << endl;
+		} 
+		else {
+		cout << endl;
+		} // if
           break;
         case 'r': //(r) - Reset iterator
             cout << "Iterator Reset" << endl;
             listy.ResetList();
           break;
         case 'a': //(a) - Delete alternate nodes
-            cout << "Delete alternate nodes test" << endl;
+            cout << "List before alternate delete: ";
+		listy.printList();
 	          listy.dan();
+		cout << endl << "List after alternate delete: ";
             listy.printList();
           break;
         case 'm': //(m) - Merge two lists
+		cout << "Length of list to find intersection: ";
+		cin >> numOfElements;
             while ((getchar()) != '\n'); // clears the cin buffer
   	        cout << "List elements separated by spaces in order: ";
   	        getline(cin, otherList);
             listy2.createList(otherList);
+		cout << "List 1: ";
+		listy.printList();
+		cout << "List 2: ";
+		listy2.printList();
             listy.merge(&listy2);
             listy.printList();
 	        break;
         case 't': //(t) - Intersection
+		cout << "Length of list to find intersection: ";
+		cin >> numOfElements;
             while ((getchar()) != '\n'); // clears the cin buffer
   	        cout << "List elements separated by spaces in order: ";
   	        getline(cin, otherList);
             listy2.createList(otherList);
+		cout << "List 1: ";
+		listy.printList();
+		cout << "List 2: ";
+		listy2.printList();
             listy.commonElements(&listy2);
             cout << "Intersection: ";
             listy.printList();
@@ -159,5 +179,5 @@ int main(int argc, char *argv[])
       }
     }  
   }
-  return 1; 
+  return 0; 
 }

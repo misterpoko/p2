@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include <stdio.h>
+#include <unistd.h>
 #include "ListNode.h"
 #include "ItemType.h"
 #include "SortedLinkedList.h"
@@ -95,6 +96,58 @@ void SortedLinkedList::insertItem(ItemType items)
         new_node->next = reader->next;
         reader->next = new_node;
 	}
+
+/* // alternate approach
+	ListNode* temp = head;
+	if (temp == NULL)
+	{
+		head = new ListNode();
+		head->item = items;
+		return; 
+	} // if
+	while (temp != NULL)
+	{
+		if (temp->item.compareTo(items) == EQUAL)
+		{
+			cout << "Sorry. You cannot insert the duplicate item." << endl;
+			return; 
+		} // if
+		temp = temp->next;
+	} // while
+	temp = head;
+	while (temp != NULL)
+	{
+		if (temp->next == NULL)
+		{
+			ListNode* aNewNode = new ListNode();
+			aNewNode->item = items;
+			if (temp->item.compareTo(items) == GREATER)
+			{
+				aNewNode->next = temp;
+				head = aNewNode;
+			}
+			else
+			{
+				temp->next = aNewNode;
+			} // if
+			return;
+		} // if
+		else if (temp->next != NULL && temp->next->item.compareTo(items) == GREATER)
+		{
+			ListNode* aNewNode = new ListNode();
+			aNewNode->item = items;
+			if (temp->item.compareTo(items) == GREATER)
+			{
+				aNewNode->next = temp;
+				head = aNewNode;
+				return;
+			} // if
+			aNewNode->next = temp->next;
+			temp->next = aNewNode;
+			return;
+		} // if	
+		temp = temp->next;
+	} // while	*/
 }// insertItem
 
 /**
@@ -122,7 +175,11 @@ void SortedLinkedList::deleteItem(ItemType items)
 {
 	ListNode* reader = head;
 	ListNode* prev = NULL; 
-
+	if (reader == NULL)
+	{
+		cout << "You cannot delete from an empty list." << endl;
+		return;
+	} // if
 	if(reader != NULL && EQUAL== items.compareTo(reader->item))
 	{
 		prev = head;
@@ -166,7 +223,7 @@ int SortedLinkedList::searchItem(ItemType item)
 		current = current->next;
 		index++;
 	}
-	cout << "Item was not found" << endl;
+	cout << "Item not found" << endl;
 	return -1; 
 
 } // searchItem
@@ -236,7 +293,7 @@ void SortedLinkedList::merge(SortedLinkedList *otherList)
 	} // while
 	checker = otherList->head;
 	while (checker != NULL)
-	{
+	{ 
 		insertItem(checker->item);
 		checker = checker->next;
 	} // while

@@ -90,67 +90,59 @@ int main(int argc, char *argv[])
       switch(userSelect)
       {
         case 'i': //(i) - Insert value
-          cout << "Enter a numer to insert: ";
-          cin >> numbSelect; 
-          newItem = ItemType();
-          newItem.initialize(numbSelect); // not sure this is functional or written yet
-          listy.insertItem(newItem);
-          listy.printList();
+            cout << "Enter a numer to insert: ";
+            cin >> numbSelect; 
+            newItem = ItemType();
+            newItem.initialize(numbSelect); // not sure this is functional or written yet
+            listy.insertItem(newItem);
+            listy.printList();
           break; 
         case 'd': //(d) - Delete value
-          cout << "Enter a numer to delete: ";
-          cin >> numbSelect;
-          newItem = ItemType();
-          newItem.initialize(numbSelect);
-          listy.deleteItem(newItem);
-          listy.printList();
+            cout << "Enter a numer to delete: ";
+            cin >> numbSelect;
+            newItem = ItemType();
+            newItem.initialize(numbSelect);
+            listy.deleteItem(newItem);
+            listy.printList();
           break;
         case 's': //(s) - Search value
-          cout << "Enter a numer to search for: ";
-          cin >> numbSelect;
-          newItem = ItemType();
-          newItem.initialize(numbSelect);
-          listy.searchItem(newItem);
+            cout << "Enter a numer to search for: ";
+            cin >> numbSelect;
+            newItem = ItemType();
+            newItem.initialize(numbSelect);
+            listy.searchItem(newItem);
           break;
         case 'n': //(n) - Print next iterator value
-          cout << listy.GetNextItem().getValue() << endl;
+            cout << listy.GetNextItem().getValue() << endl;
           break;
         case 'r': //(r) - Reset iterator
-          cout << "Iterator Reset" << endl;
-          listy.ResetList();
+            cout << "Iterator Reset" << endl;
+            listy.ResetList();
           break;
         case 'a': //(a) - Delete alternate nodes
-          cout << "Delete alternate nodes test" << endl;
-	        listy.dan();
-          listy.printList();
+            cout << "Delete alternate nodes test" << endl;
+	          listy.dan();
+            listy.printList();
           break;
         case 'm': //(m) - Merge two lists
-          if (1) 
-          {
-            SortedLinkedList* merge = new SortedLinkedList();
             while ((getchar()) != '\n'); // clears the cin buffer
   	        cout << "List elements separated by spaces in order: ";
   	        getline(cin, otherList);
             listy2.createList(otherList);
             listy.merge(&listy2);
             listy.printList();
-	  } // if
-	break;
+	        break;
         case 't': //(t) - Intersection
-          if (1) 
-          {
-            SortedLinkedList* intersect = new SortedLinkedList();
             while ((getchar()) != '\n'); // clears the cin buffer
   	        cout << "List elements separated by spaces in order: ";
   	        getline(cin, otherList);
             listy2.createList(otherList);
-            listy.commonElements(intersect);
+            listy.commonElements(&listy2);
             listy.printList();
-          } // if
           break;
         case 'p': //(p) - Print list
-          cout << "Print the list: ";
-          listy.printList();
+            cout << "Print the list: ";
+            listy.printList();
           break;
         case 'l': //(l) - Print length
           length = listy.length();

@@ -210,35 +210,27 @@ ItemType SortedLinkedList::GetNextItem()
  */
 void SortedLinkedList::merge(SortedLinkedList *otherList)
 {
-	ListNode* given = otherList->head;
-	ListNode* old = head;
-	SortedLinkedList* newList = new SortedLinkedList();
-	while (old != NULL || given != NULL)
+	ListNode* checker = otherList->head;
+	ListNode* temp = head;
+	while (checker != NULL)
 	{
-		if (old == NULL)
+		while (temp != NULL) 
 		{
-			newList->insertItem(old->item);
-			old = old->next;
-		} 
-		else if (given == NULL)
-		{
-			newList->insertItem(given->item);
-			given = given->next;
-		} 
-		else if (given->item.compareTo(old->item) == EQUAL)
-		{
-			while(newList->head != NULL)
+			if (checker->item.compareTo(temp->item) == EQUAL)
 			{
-				newList->deleteItem(newList->head->item);
-			} // while
-			return;
-		} // if
+				cout << "dup";
+				return;
+			} // if
+			temp = temp->next;
+		} // while
+		checker = checker->next;
 	} // while
-	while (head != NULL)
+	checker = otherList->head;
+	while (checker != NULL)
 	{
-		deleteItem(head->item);
+		insertItem(checker->item);
+		checker = checker->next;
 	} // while
-	head = newList->head;
 } // merge
 
 /**

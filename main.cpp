@@ -96,11 +96,19 @@ int main(int argc, char *argv[])
           listy.printList();
           break;
         case 'm': //(m) - Merge two lists
-          cout <<  "List elements separated by spaces in order :";
-          while ((getchar()) != '\n'); // clears the cin buffer
-          getline(cin, otherList);
-//          listy.merge(otherList); 
-          break;
+          if (1) 
+          {
+            SortedLinkedList* merge = new SortedLinkedList();
+            for (int i = 0; i < 5; i++)
+            {
+              newItem = ItemType();
+              newItem.initialize(i * 13);
+              merge->insertItem(newItem);
+            } // for
+          listy.merge(merge);
+          listy.printList();
+	  } // if
+	break;
         case 't': //(t) - Intersection
           if (1) 
           {

@@ -22,6 +22,7 @@ class SortedLinkedList
     void dan();
     void commonElements(SortedLinkedList *otherList);
     void printList();
+    void createList(string inputList);
     
     
   private:

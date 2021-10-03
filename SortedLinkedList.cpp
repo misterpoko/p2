@@ -286,3 +286,22 @@ void SortedLinkedList::commonElements(SortedLinkedList *otherList)
 	head = blankSlate -> head;		
 } // commonElements
     
+void SortedLinkedList::createList(string inputList)
+{
+	int valueOfNode;
+  	ItemType newMerge = ItemType();
+	int num,n;
+  	char* token;
+	n = inputList.length();
+	char charList[n+1];
+	strcpy(charList,inputList.c_str());
+	token = strtok(charList, " ");
+	while(token != NULL )
+	{
+		//printf ("%s\n",token);
+		num = atoi(token);
+		token = strtok(NULL, " "); // Moves token to the next item.
+		newMerge.initialize(num);
+    	insertItem(newMerge);
+	}
+}

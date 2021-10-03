@@ -40,6 +40,7 @@ void createList(SortedLinkedList list)
 int main(int argc, char *argv[]) 
 {
   SortedLinkedList listy;
+  SortedLinkedList listy2;
   char userSelect;
   string otherList;
   int numbSelect;
@@ -127,32 +128,24 @@ int main(int argc, char *argv[])
           if (1) 
           {
             SortedLinkedList* merge = new SortedLinkedList();
-            for (int i = 0; i < 5; i++)
-            {
-              newItem = ItemType();
-              newItem.initialize(i * 13);
-              merge->insertItem(newItem);
-            } // for
-          listy.merge(merge);
-          listy.printList();
+            while ((getchar()) != '\n'); // clears the cin buffer
+  	        cout << "List elements separated by spaces in order: ";
+  	        getline(cin, otherList);
+            listy2.createList(otherList);
+            listy.merge(&listy2);
+            listy.printList();
 	  } // if
 	break;
         case 't': //(t) - Intersection
           if (1) 
           {
             SortedLinkedList* intersect = new SortedLinkedList();
-            cout << "Length of list to find intersection: ";
-            cin >> numOfElements;
-            cout << "List elements separated by spaces in order: ";
-            //cin >>
-            for (int i = 0; i < 5; i++)
-            {
-              newItem = ItemType();
-              newItem.initialize(i * 5);
-              intersect->insertItem(newItem);
-            } // for
-          listy.commonElements(intersect);
-          listy.printList();
+            while ((getchar()) != '\n'); // clears the cin buffer
+  	        cout << "List elements separated by spaces in order: ";
+  	        getline(cin, otherList);
+            listy2.createList(otherList);
+            listy.commonElements(intersect);
+            listy.printList();
           } // if
           break;
         case 'p': //(p) - Print list

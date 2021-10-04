@@ -8,44 +8,17 @@
 #include "ItemType.h"
 
 using namespace std;
-/*void createList(SortedLinkedList list)
-{
-  int valueOfNode;
-	int lengthOfList;
-  string line;
-  ItemType newMerge = ItemType();
-  int num,n;
-  char* token;
-	cout << "Length of list to merge: ";
-	cin >> lengthOfList;
-  while ((getchar()) != '\n'); // clears the cin buffer
-  cout << "List elements separated by spaces in order: ";
-  getline(cin, line);
-	n = line.length();
-	char charList[n+1];
-	strcpy(charList,line.c_str());
-	token = strtok(charList, " ");
-	while(token != NULL )
-	{
-		//printf ("%s\n",token);
-		num = atoi(token);
-		token = strtok(NULL, " "); // Moves token to the next item.
-		newMerge.initialize(num);
-    list.insertItem(newMerge);
-	}
-  //list.printList();
-  
-} // createList
-*/
 int main(int argc, char *argv[]) 
 {
   SortedLinkedList listy;
   SortedLinkedList listy2;
-  char userSelect;
+  string userSelect;
+  char userSelectChar;
   string otherList;
   int numbSelect;
   int length;
   bool exit = false;
+  bool hold = true;
 
   ifstream inFile;
   inFile.open(argv[1]);
@@ -84,7 +57,14 @@ int main(int argc, char *argv[])
     {
       cout << "Enter a command: ";
       cin >> userSelect;
-      switch(userSelect)
+      while(userSelect.size()!=1) 
+      {
+        cout << "Invalid command, try again!" <<endl;
+        cout << "Enter a command: ";
+        cin >> userSelect;
+      }
+      userSelectChar = userSelect[0];
+      switch(userSelectChar)
       {
         case 'i': //(i) - Insert value
             cout << "Enter a numer to insert: ";
@@ -163,7 +143,6 @@ int main(int argc, char *argv[])
 		        listy2.clear();
           break;
         case 'p': //(p) - Print list
-            cout << "Print the list: ";
             listy.printList();
           break;
         case 'l': //(l) - Print length

@@ -99,7 +99,7 @@ void SortedLinkedList::printList()
 	{
 		cout << printVar->item.getValue() << " ";
 		printVar = printVar->next;
-	}
+	}//while
 	delete(printVar);
 	cout << endl;
 } // printList
@@ -172,10 +172,10 @@ int SortedLinkedList::searchItem(ItemType item)
 		{
 			cout << "Index " << index << endl; 
 			return index;
-		}
+		}//if
 		current = current->next;
 		index++;
-	}
+	}//while 
 	cout << "Item not found" << endl;
 	return -1; 
 
@@ -201,13 +201,13 @@ ItemType SortedLinkedList::GetNextItem()
 	{
 		cout << "List is empty" <<endl;
 		return empty;
-	}
+	}//if
 	// edge case if it is the first element	
 	if(currentPos == NULL)
 	{
 		currentPos = head;
 		return currentPos->item;
-	}
+	}//if
 	// edge case if at end of list
 	if (currentPos->next == NULL) {
 		cout << "The end of the list has been reached";
@@ -231,6 +231,7 @@ void SortedLinkedList::merge(SortedLinkedList *otherList)
 	// this nested loop checks for duplicates and attempts to short
 	while (checker != NULL)
 	{
+		temp = head;
 		while (temp != NULL) 
 		{
 			if (checker->item.compareTo(temp->item) == ItemType::EQUAL)
@@ -326,10 +327,9 @@ void SortedLinkedList::createList(string inputList)
 	token = strtok(charList, " ");
 	while(token != NULL )
 	{
-		//printf ("%s\n",token);
 		num = atoi(token);
 		token = strtok(NULL, " "); // Moves token to the next item.
 		newMerge.initialize(num);
     	insertItem(newMerge);
-	}
+	}//while
 } // createList

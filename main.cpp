@@ -172,11 +172,11 @@ int main(int argc, char *argv[])
           cout << "Linked List is of length : " << length << endl;
           break;
         case 'q': //(q) - Quit program
-          cout << "Quitting..." << endl;
+          cout << "Quitting program..." << endl;
           exit = true;
           break;
         default: //default case so if the input is not a selection
-          cout << "Invalid selection" << endl;
+          cout << "Invalid command, try again!" << endl;
           while ((getchar()) != '\n'); // clears the cin buffer
       }
     }  

@@ -37,7 +37,7 @@ SortedLinkedList::~SortedLinkedList()
  */
 int SortedLinkedList::length() const
 {
-	if (head == NULL) 
+/*	if (head == NULL) 
 	{
 		return 0;
 	}
@@ -52,6 +52,15 @@ int SortedLinkedList::length() const
 		}
 		return i-1;
 	} // if
+	*/
+	ListNode* temp = head;
+	int i = 0;
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		i++;
+	} // while
+	return i;
 } // length
 
 /**

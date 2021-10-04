@@ -205,7 +205,7 @@ void SortedLinkedList::deleteItem(ItemType items)
 } // deleteItem
 
 /**
- * This method clears the list using the delete command for
+ * This method clears the list using the delete command for main
  */
 void SortedLinkedList::clear()
 {
@@ -348,13 +348,16 @@ void SortedLinkedList::commonElements(SortedLinkedList *otherList)
 		temp = temp->next;
 	} // while
 	temp = head;
+	/*
 	while (temp != NULL && temp -> next != NULL)
 	{
 		temp = temp->next;
 		delete(head);
 		head = temp;		
-	} // while
+	} // while*/
+	clear();
 	head = blankSlate -> head;		
+	delete(blankSlate);
 } // commonElements
     
 void SortedLinkedList::createList(string inputList)

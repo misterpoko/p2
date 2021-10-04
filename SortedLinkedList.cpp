@@ -77,10 +77,10 @@ void SortedLinkedList::insertItem(ItemType items)
     { 
 		new_node->next = head;
 		head = new_node;
-		/*if (head != NULL)
-		{
+//		if (head != NULL)
+//		{
 		//	currentPos->next = head;
-		} // if*/
+//		} // if
     }//if
     else if (items.compareTo(reader->item) == EQUAL)
     {
@@ -91,6 +91,8 @@ void SortedLinkedList::insertItem(ItemType items)
     }//else if
     else       
 	{
+	// checks whether the next one is greater or equal returning without changing the list if there is a duplicate or getting
+	// to the point of the list where it is supposed to add the element
     	while(reader->next != NULL && (GREATER == items.compareTo(reader->next->item) || items.compareTo(reader->next->item) == EQUAL))
         {
             if (items.compareTo(reader->next->item) == EQUAL)
@@ -189,6 +191,7 @@ void SortedLinkedList::deleteItem(ItemType items)
 		cout << "You cannot delete from an empty list." << endl;
 		return;
 	} // if
+	// edge case of first node
 	if(reader != NULL && EQUAL== items.compareTo(reader->item))
 	{
 		prev = head;
@@ -198,11 +201,13 @@ void SortedLinkedList::deleteItem(ItemType items)
 	}
 	else
 	{
+		// find the item to delete
 		while(reader != NULL && EQUAL != items.compareTo(reader->item))
 		{
 			prev = reader; 
 			reader = reader->next;
 		}
+		// item doesnt exist
 		if(reader == NULL)
 		{
 			cout << "Item not found." << endl; 
@@ -215,6 +220,7 @@ void SortedLinkedList::deleteItem(ItemType items)
 
 /**
  * This method clears the list using the delete command for main
+ * helps with a memory leak.
  */
 void SortedLinkedList::clear()
 {
@@ -265,11 +271,13 @@ ItemType SortedLinkedList::GetNextItem()
 	ItemType empty = ItemType();
 	empty.initialize(-1);
 	
+	// edge case if it is the first element	
 	if(currentPos == NULL)
 	{
 		currentPos = head;
 		return currentPos->item;
 	}
+	// edge case if at end of list
 	if (currentPos->next == NULL) {
 		cout << "The end of the list has been reached";
 		return empty;
@@ -289,6 +297,7 @@ void SortedLinkedList::merge(SortedLinkedList *otherList)
 {
 	ListNode* checker = otherList->head;
 	ListNode* temp = head;
+	// this nested loop checks for duplicates and attempts to short
 	while (checker != NULL)
 	{
 		while (temp != NULL) 
@@ -303,6 +312,7 @@ void SortedLinkedList::merge(SortedLinkedList *otherList)
 		checker = checker->next;
 	} // while
 	checker = otherList->head;
+	// starts adding other list given no duplicates
 	while (checker != NULL)
 	{ 
 		insertItem(checker->item);
@@ -339,9 +349,11 @@ void SortedLinkedList::dan()
  */ 
 void SortedLinkedList::commonElements(SortedLinkedList *otherList)
 {
+	// create a brand new list and populate it with dups
 	SortedLinkedList* blankSlate = new SortedLinkedList();
 	ListNode* temp = otherList -> head;
 	ListNode* original;
+	// find dups
 	while (temp != NULL)
 	{
 		original = head;
@@ -363,11 +375,17 @@ void SortedLinkedList::commonElements(SortedLinkedList *otherList)
 		delete(head);
 		head = temp;		
 	} // while*/
+	// purge current list then set it to new list just created
 	clear();
 	head = blankSlate -> head;		
 	delete(blankSlate);
 } // commonElements
-    
+ 
+/**
+ * This method takes in a string and turns it into a sorted linked list.
+ * It is used in main to create list for the merge and intersect commands
+ * @param inputList a string full of numbers seperated by spaces representing the list
+ */   
 void SortedLinkedList::createList(string inputList)
 {
 	int valueOfNode;
@@ -386,4 +404,4 @@ void SortedLinkedList::createList(string inputList)
 		newMerge.initialize(num);
     	insertItem(newMerge);
 	}
-}
+} // createList

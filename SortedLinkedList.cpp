@@ -233,31 +233,23 @@ int SortedLinkedList::searchItem(ItemType item)
  */
 void SortedLinkedList::ResetList()
 {
-	currentPos = head;
+	currentPos = NULL;
 } // ResetList
     
 /**
  * This method uses the currentPos and gets the next item in the list
  * @return The next item in the list
  */
-ItemType SortedLinkedList::GetNextItem() // Bug after reseting it and the 'n' case prints 9 instead of 3
+ItemType SortedLinkedList::GetNextItem() 
 {
 	ItemType empty = ItemType();
 	ListNode* temp = new ListNode;
 	empty.initialize(-1);
 	
-	if(currentPos == head && headCheck == true)
-	{
-		temp = currentPos;
-		currentPos = currentPos->next;
-		headCheck = false;
-		return temp->item;
-
-	}
 	if(currentPos == NULL)
 	{
-		cout << "The List is empty" << endl;
-		return empty;
+		currentPos = head;
+		return currentPos->item;
 	}
 	if (currentPos->next == NULL) {
 		cout << "The end of the list has been reached";
@@ -265,26 +257,6 @@ ItemType SortedLinkedList::GetNextItem() // Bug after reseting it and the 'n' ca
 	} // if
 	currentPos = currentPos->next;
 	return currentPos->item;
-	 /*
-	ItemType whatsNext;
-	if(currentPos == NULL)
-	{
-		cout << "The List is empty" << endl;
-		return whatsNext;
-	}
-	if (currentPos == head)
-	{
-		return head->item;
-	} 
-	if (currentPos->next == NULL)
-	{
-		cout << "The end of the list has been reached";
-		return whatsNext;
-	}
-	whatsNext = currentPos->item;
-	currentPos = currentPos->next;
-	return whatsNext;
-	*/
 } // GetNextItem
 
 

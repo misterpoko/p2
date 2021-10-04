@@ -67,6 +67,7 @@ Node 1 = otherlist head
 Node 2 = currentlist head
 While(node 1 isnt at end of list) -------------n
 {
+	reset NODE1
 	while(node 2 isnt at end  of list) ----n
 	{
 		compare(node1,node2)-----------1

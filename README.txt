@@ -59,64 +59,54 @@ helper methods not specified
 -----------------------------------------------------
 
 
+MERGE Function bigO
 
+BigO(n^2 + n^2) -> BigO(n^2)
 
-
-
-
-
-Merge Function Big O notation and pseudo code
-    Big O: O(n^2+n^2) -> O(n^2)
-    Pseudo code:
-    
-    checker = otherList->head;
-	temp = head;
-	while (checker not at end of list)
-	{ --------------------------------------------------------------------------------------------\
-		while (temp not end of list) -------------------------------------------------------\ |
-		{                                                                                   | |
-			if (checker->item == temp->item) -----------------------------------------\ | |
-			{                                                                         | | |
-				cout << "Sorry. You cannot insert the duplicate item" << endl;    1 n n           n * n
-				return;                                                           | | |
-			}                                                                         | | |
-			advance temp;-------------------------------------------------------------/ | |
-		} ----------------------------------------------------------------------------------/ |
-		advance checker;                                                                      |
-	} --------------------------------------------------------------------------------------------/
-	checker = otherList->head;
-	while (checker not at end of list)
-	{ ----------------------------------\
-		insert item into checker; n n (our insert item is of n time complexity) n * n
-		advance checker;            |
-	} ----------------------------------/
-
-Find Common Elements Function Big O notation and pseudo code
-    Big O: O(n^2+n) -> O(n^2)
-    Pseudo Code:
-
-    blankSlate = new SortedLinkedList();
-	temp = otherList -> head;
-	ListNode* original;
-	while (temp not at end of list)
+Node 1 = otherlist head
+Node 2 = currentlist head
+While(node 1 isnt at end of list) -------------n
+{
+	while(node 2 isnt at end  of list) ----n
 	{
-		original = head;
-		while (orginal not at end of list)
-		{----------------------------------------------\
-			if (temp item == original item)----- 1 |
-			{                                    | n
-				insert item into blankSlate; n |
-			} -----------------------------------/ |       n * (n + 1)
-			advance orginal                        |
-		} ---------------------------------------------/
-		advance temp
-	}
-	temp = head;
-	while ( temp not at end of file and temp next isnt NULL)
-	{ -----------------------------------------\
-		advance temp                       |
-		delete(head);                      n                         n
-		head = temp;		           |
-	} -----------------------------------------/
-	head = blankSlate -> head;		
-}
+		compare(node1,node2)-----------1
+		advance node2
+	} // while
+	advance node1
+} // while
+node1 = otherlist head
+while (node1 isnt at end of list) ------------n
+{
+	insert item in main list -------------n  (dependent on insert item which is bigO n)
+	advance node1
+} // while
+
+--------------------------------------------------
+
+Common Elements Function bigO
+bigO(n^3 + n + n^3) -> bigO(n^3)
+
+Create tempList
+Node 1 = otherlist head;
+Node 2;
+while (node1 is not at end of list) -------------n
+{
+	node2 = currentList head;
+	while (node2 isnt at end of list) -------n
+	{
+		if(compare(node1,node2)) --------1
+			insert item in tempList -n
+		advance node2
+	} // while
+	advance node1
+} // while
+clear currentList ------------------------------n
+node1 = templist head
+while (node1 isnt at end of list) --------------n
+{
+	insert item from templist to current list -n^2 (because its a two step find in templist is n and insert in current list is n)
+	advance node1
+} // while
+delete temp list
+
+-------------------------------------------------

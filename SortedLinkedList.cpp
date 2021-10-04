@@ -37,22 +37,6 @@ SortedLinkedList::~SortedLinkedList()
  */
 int SortedLinkedList::length() const
 {
-/*	if (head == NULL) 
-	{
-		return 0;
-	}
-	else
-	{
-		int i = 1;
-		ListNode* temp = head;
-		while (temp != NULL)
-		{
-			temp = temp -> next;	
-			i++;	
-		}
-		return i-1;
-	} // if
-	*/
 	ListNode* temp = head;
 	int i = 0;
 	while (temp != NULL)
@@ -73,16 +57,12 @@ void SortedLinkedList::insertItem(ItemType items)
     ListNode* reader = head;
     new_node->item = items;
     new_node->next= NULL;
-    if (head==NULL || (LESS == items.compareTo(reader->item)))
+    if (head==NULL || (ItemType::LESS == items.compareTo(reader->item)))
     { 
 		new_node->next = head;
 		head = new_node;
-//		if (head != NULL)
-//		{
-		//	currentPos->next = head;
-//		} // if
     }//if
-    else if (items.compareTo(reader->item) == EQUAL)
+    else if (items.compareTo(reader->item) == ItemType::EQUAL)
     {
 		delete(new_node);
         cout << "Sorry. You cannot insert the duplicate item." << endl;
@@ -93,9 +73,9 @@ void SortedLinkedList::insertItem(ItemType items)
 	{
 	// checks whether the next one is greater or equal returning without changing the list if there is a duplicate or getting
 	// to the point of the list where it is supposed to add the element
-    	while(reader->next != NULL && (GREATER == items.compareTo(reader->next->item) || items.compareTo(reader->next->item) == EQUAL))
+    	while(reader->next != NULL && (ItemType::GREATER == items.compareTo(reader->next->item) || items.compareTo(reader->next->item) == ItemType::EQUAL))
         {
-            if (items.compareTo(reader->next->item) == EQUAL)
+            if (items.compareTo(reader->next->item) == ItemType::EQUAL)
             {
 				delete(new_node);
             	cout << "Sorry. You cannot insert the duplicate item." << endl;
@@ -107,60 +87,7 @@ void SortedLinkedList::insertItem(ItemType items)
         new_node->next = reader->next;
         reader->next = new_node;
 	}
-
-/* // alternate approach
-	ListNode* temp = head;
-	if (temp == NULL)
-	{
-		head = new ListNode();
-		head->item = items;
-		return; 
-	} // if
-	while (temp != NULL)
-	{
-		if (temp->item.compareTo(items) == EQUAL)
-		{
-			cout << "Sorry. You cannot insert the duplicate item." << endl;
-			return; 
-		} // if
-		temp = temp->next;
-	} // while
-	temp = head;
-	while (temp != NULL)
-	{
-		if (temp->next == NULL)
-		{
-			ListNode* aNewNode = new ListNode();
-			aNewNode->item = items;
-			if (temp->item.compareTo(items) == GREATER)
-			{
-				aNewNode->next = temp;
-				head = aNewNode;
-			}
-			else
-			{
-				temp->next = aNewNode;
-			} // if
-			return;
-		} // if
-		else if (temp->next != NULL && temp->next->item.compareTo(items) == GREATER)
-		{
-			ListNode* aNewNode = new ListNode();
-			aNewNode->item = items;
-			if (temp->item.compareTo(items) == GREATER)
-			{
-				aNewNode->next = temp;
-				head = aNewNode;
-				return;
-			} // if
-			aNewNode->next = temp->next;
-			temp->next = aNewNode;
-			return;
-		} // if	
-		temp = temp->next;
-	} // while	*/
-}// insertItem
-
+}
 /**
  * This method prints out the list in the standard output
  */
@@ -192,7 +119,7 @@ void SortedLinkedList::deleteItem(ItemType items)
 		return;
 	} // if
 	// edge case of first node
-	if(reader != NULL && EQUAL== items.compareTo(reader->item))
+	if(reader != NULL && ItemType::EQUAL== items.compareTo(reader->item))
 	{
 		prev = head;
 		head = reader->next;
@@ -202,7 +129,7 @@ void SortedLinkedList::deleteItem(ItemType items)
 	else
 	{
 		// find the item to delete
-		while(reader != NULL && EQUAL != items.compareTo(reader->item))
+		while(reader != NULL && ItemType::EQUAL != items.compareTo(reader->item))
 		{
 			prev = reader; 
 			reader = reader->next;
@@ -241,7 +168,7 @@ int SortedLinkedList::searchItem(ItemType item)
 	ListNode* current = head;
 	while (current != NULL)
 	{
-		if (item.compareTo(current->item)== EQUAL)
+		if (item.compareTo(current->item)== ItemType::EQUAL)
 		{
 			cout << "Index " << index << endl; 
 			return index;
@@ -302,7 +229,7 @@ void SortedLinkedList::merge(SortedLinkedList *otherList)
 	{
 		while (temp != NULL) 
 		{
-			if (checker->item.compareTo(temp->item) == EQUAL)
+			if (checker->item.compareTo(temp->item) == ItemType::EQUAL)
 			{
 				cout << "Sorry. You cannot insert the duplicate item" << endl;
 				return;
@@ -359,7 +286,7 @@ void SortedLinkedList::commonElements(SortedLinkedList *otherList)
 		original = head;
 		while (original != NULL)
 		{
-			if (temp->item.compareTo(original->item) == EQUAL)
+			if (temp->item.compareTo(original->item) == ItemType::EQUAL)
 			{
 				blankSlate -> insertItem(temp->item);
 			} // if

@@ -2,12 +2,13 @@
 #define ITEMTYPE_H
 
 using namespace std;
-enum Comparison {GREATER,LESS,EQUAL}; //Need to put this back in the class and not have it as a global variabe
+
 
 class ItemType
   {
     public:
       ItemType();
+      enum Comparison {GREATER,LESS,EQUAL}; //Need to put this back in the class and not have it as a global variabe
       Comparison compareTo(ItemType item);
       int getValue() const;
       void initialize(int num); 

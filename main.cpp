@@ -68,7 +68,6 @@ int main(int argc, char *argv[])
       listy.insertItem(newItem);
     }
     cout << endl;
-
     cout << "Commands:" << endl;
     cout << "(i) - Insert value" << endl;
     cout << "(d) - Delete value" << endl;
@@ -127,57 +126,57 @@ int main(int argc, char *argv[])
           break;
         case 'a': //(a) - Delete alternate nodes
             cout << "List before alternate delete: ";
-		listy.printList();
+		        listy.printList();
 	          listy.dan();
-		cout << endl << "List after alternate delete: ";
+		        cout << endl << "List after alternate delete: ";
             listy.printList();
           break;
         case 'm': //(m) - Merge two lists
-		cout << "Length of list to find intersection: ";
-		cin >> numOfElements;
+            cout << "Length of list to find intersection: ";
+            cin >> numOfElements;
             while ((getchar()) != '\n'); // clears the cin buffer
   	        cout << "List elements separated by spaces in order: ";
   	        getline(cin, otherList);
             listy2.createList(otherList);
-		cout << "List 1: ";
-		listy.printList();
-		cout << "List 2: ";
-		listy2.printList();
+            cout << "List 1: ";
+            listy.printList();
+            cout << "List 2: ";
+            listy2.printList();
             listy.merge(&listy2);
             listy.printList();
-		listy2.clear();
+		        listy2.clear();
 	        break;
         case 't': //(t) - Intersection
-		cout << "Length of list to find intersection: ";
-		cin >> numOfElements;
+		        cout << "Length of list to find intersection: ";
+		        cin >> numOfElements;
             while ((getchar()) != '\n'); // clears the cin buffer
   	        cout << "List elements separated by spaces in order: ";
   	        getline(cin, otherList);
             listy2.createList(otherList);
-		cout << "List 1: ";
-		listy.printList();
-		cout << "List 2: ";
-		listy2.printList();
+            cout << "List 1: ";
+            listy.printList();
+            cout << "List 2: ";
+            listy2.printList();
             listy.commonElements(&listy2);
             cout << "Intersection: ";
             listy.printList();
-		listy2.clear();
+		        listy2.clear();
           break;
         case 'p': //(p) - Print list
             cout << "Print the list: ";
             listy.printList();
           break;
         case 'l': //(l) - Print length
-          length = listy.length();
-          cout << "Linked List is of length : " << length << endl;
+            length = listy.length();
+            cout << "Linked List is of length : " << length << endl;
           break;
         case 'q': //(q) - Quit program
-          cout << "Quitting program..." << endl;
-          exit = true;
+            cout << "Quitting program..." << endl;
+            exit = true;
           break;
         default: //default case so if the input is not a selection
-          cout << "Invalid command, try again!" << endl;
-          while ((getchar()) != '\n'); // clears the cin buffer
+            cout << "Invalid command, try again!" << endl;
+            while ((getchar()) != '\n'); // clears the cin buffer
       }
     }  
   }

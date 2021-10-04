@@ -84,7 +84,7 @@ while (node1 isnt at end of list) ------------n
 --------------------------------------------------
 
 Common Elements Function bigO
-bigO(n^3 + n + n^3) -> bigO(n^3)
+bigO(n^2 + n + n^3) -> bigO(n^3)
 
 Create tempList
 Node 1 = otherlist head;

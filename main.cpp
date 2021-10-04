@@ -145,6 +145,7 @@ int main(int argc, char *argv[])
 		listy2.printList();
             listy.merge(&listy2);
             listy.printList();
+		listy2.clear();
 	        break;
         case 't': //(t) - Intersection
 		cout << "Length of list to find intersection: ";
@@ -160,6 +161,7 @@ int main(int argc, char *argv[])
             listy.commonElements(&listy2);
             cout << "Intersection: ";
             listy.printList();
+		listy2.clear();
           break;
         case 'p': //(p) - Print list
             cout << "Print the list: ";

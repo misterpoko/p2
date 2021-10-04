@@ -17,7 +17,7 @@ class SortedLinkedList
     ItemType GetNextItem();
     void ResetList();
     
-    
+   void clear(); 
     void merge(SortedLinkedList *otherList); 
     void dan();
     void commonElements(SortedLinkedList *otherList);

@@ -204,6 +204,14 @@ void SortedLinkedList::deleteItem(ItemType items)
 	}
 } // deleteItem
 
+void SortedLinkedList::clear()
+{
+	while(head != NULL)
+	{
+		deleteItem(head->item);
+	} // while
+} // clear
+
 /**
  * This method searches the list for the items a specific 
  * @param item the Item that we are searching for

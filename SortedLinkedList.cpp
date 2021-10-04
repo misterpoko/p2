@@ -125,7 +125,7 @@ void SortedLinkedList::deleteItem(ItemType items)
 		head = reader->next;
 		delete(prev);
 		return; 
-	}
+	}//if
 	else
 	{
 		// find the item to delete
@@ -133,13 +133,13 @@ void SortedLinkedList::deleteItem(ItemType items)
 		{
 			prev = reader; 
 			reader = reader->next;
-		}
+		}//while
 		// item doesnt exist
 		if(reader == NULL)
 		{
 			cout << "Item not found." << endl; 
 			return;
-		}
+		}//if
 		prev -> next = reader->next;
 		delete(reader);
 	}
@@ -294,18 +294,15 @@ void SortedLinkedList::commonElements(SortedLinkedList *otherList)
 		} // while
 		temp = temp->next;
 	} // while
-	temp = head;
-	/*
-	while (temp != NULL && temp -> next != NULL)
-	{
-		temp = temp->next;
-		delete(head);
-		head = temp;		
-	} // while*/
+	temp = blankSlate->head;
 	// purge current list then set it to new list just created
 	clear();
-	head = blankSlate -> head;		
-	delete(blankSlate);
+    while (temp!= NULL)
+    {
+    	insertItem(temp->item);
+        temp = temp->next;
+    } // while
+    delete blankSlate;
 } // commonElements
  
 /**

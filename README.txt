@@ -1,8 +1,10 @@
-The program name is Assigment_2
+Nathaniel Mathers            811053553   nbm54197@uga.edu
+Orain Ferguson               811225938   onf32955@uga.edu
+Assignment 2
+
 
 The program makes a linked list and does some methods on the linked list it gets from a file from the command line
 
-Authors: Nathaniel Mathers Orain Ferguson
 
 Citations
     Some logic and coding structure for the Insert Method from 
@@ -13,7 +15,7 @@ Citations
 How to compile 
     make
 How to Run 
-    compile input.txt(Can use any txt file as long as its ints seperated by spaces)
+    compile input.txt(Can use any txt file as long as its ints seperated by spaces) takes in one input
 
 Files needed to run code
     main.cpp
@@ -23,6 +25,45 @@ Files needed to run code
     SorteLinkedList.h
     ListNode.h 
     input.txt
+
+
+Contributions
+------------------------------------------------------
+Nathaniel:
+
+itemType.h
+Itemptype.cpp
+SortedLinkedList
+	-Constructor and destructor
+	- delete item
+	- delete alternate nodes
+	- common elements
+bug fixing
+mem leak fixing
+helper methods not specified
+
+------------------------------------------------------
+Orain:
+
+ListNode.h
+SortedLinkedList
+	- length
+	- insert item
+	- search
+	- getNextItem
+	- reset list
+	- merge
+main.cpp
+bug fixing
+helper methods not specified
+-----------------------------------------------------
+
+
+
+
+
+
+
 
 Merge Function Big O notation and pseudo code
     Big O: O(n^2+n^2) -> O(n^2)

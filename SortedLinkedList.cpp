@@ -197,7 +197,11 @@ ItemType SortedLinkedList::GetNextItem()
 {
 	ItemType empty = ItemType();
 	empty.initialize(-1);
-	
+	if(head == NULL)
+	{
+		cout << "List is empty" <<endl;
+		return empty;
+	}
 	// edge case if it is the first element	
 	if(currentPos == NULL)
 	{

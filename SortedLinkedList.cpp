@@ -13,7 +13,7 @@
 SortedLinkedList::SortedLinkedList() 
 {
 	head = NULL;
-	currentPos = new ListNode();
+	currentPos = /*new ListNode()*/ head;
 	bool headCheck = true;
 } // SortedLinkedList
 
@@ -68,10 +68,10 @@ void SortedLinkedList::insertItem(ItemType items)
     { 
 		new_node->next = head;
 		head = new_node;
-		if (head != NULL)
+		/*if (head != NULL)
 		{
-			currentPos->next = head;
-		} // if
+		//	currentPos->next = head;
+		} // if*/
     }//if
     else if (items.compareTo(reader->item) == EQUAL)
     {
@@ -254,7 +254,6 @@ void SortedLinkedList::ResetList()
 ItemType SortedLinkedList::GetNextItem() 
 {
 	ItemType empty = ItemType();
-	ListNode* temp = new ListNode;
 	empty.initialize(-1);
 	
 	if(currentPos == NULL)

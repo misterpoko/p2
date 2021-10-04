@@ -84,7 +84,6 @@ int main(int argc, char *argv[])
     {
       cout << "Enter a command: ";
       cin >> userSelect;
-      
       switch(userSelect)
       {
         case 'i': //(i) - Insert value
@@ -111,14 +110,15 @@ int main(int argc, char *argv[])
             listy.searchItem(newItem);
           break;
         case 'n': //(n) - Print next iterator value
-		numOfElements = listy.GetNextItem().getValue();
-		if (numOfElements != -1)
-		{
+		      numOfElements = listy.GetNextItem().getValue();
+          if (numOfElements != -1)
+          {
             cout << numOfElements << endl;
-		} 
-		else {
-			cout << endl;
-		} // if
+          }//if
+          else 
+          {
+            cout << endl;
+          } // if
           break;
         case 'r': //(r) - Reset iterator
             cout << "Iterator Reset" << endl;

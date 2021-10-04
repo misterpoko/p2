@@ -204,6 +204,9 @@ void SortedLinkedList::deleteItem(ItemType items)
 	}
 } // deleteItem
 
+/**
+ * This method clears the list using the delete command for
+ */
 void SortedLinkedList::clear()
 {
 	while(head != NULL)
